@@ -1,7 +1,10 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+    "compilerOptions": {
+        "composite": true,
+        "esModuleInterop": true
+    },
+    "files": [],
+    "references": [{ "path": "./tsconfig.app.json" }],
+    "include": ["eslint.config.js", "src"],
+    "exclude": ["node_modules", "dist", "vite.config.ts"]
 }
