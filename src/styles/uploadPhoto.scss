@@ -1,0 +1,14 @@
+#upload-photo {
+    margin-top: 2rem;
+}
+
+#avatar {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 60px;
+    background-color: var.$lighter-blue;
+    border: 1px solid var.$border-colour-light-blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

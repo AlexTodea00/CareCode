@@ -1,0 +1,19 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var.$space-s;
+    height: max-content;
+    align-items: center;
+}
+
+h2 {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    color: var.$grey;
+    margin: 0;
+    padding: 0;
+}

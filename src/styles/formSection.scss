@@ -1,0 +1,32 @@
+.section-wrapper {
+    margin-top: var.$space-xl;
+    gap: var.$space-s;
+    height: max-content;
+    align-items: center;
+    box-shadow: var.$black-shadow;
+    border-radius: 12px;
+    padding: 12px;
+    width: 100%;
+}
+
+.icon-wrapper {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+
+    &.person {
+        background-color: var.$lighter-blue;
+        border: 1px solid var.$border-colour-light-blue;
+    }
+}
+
+h2 {
+    font-size: var.$font-size-m;
+}
+
+p {
+    font-size: var.$font-size-s;
+}
