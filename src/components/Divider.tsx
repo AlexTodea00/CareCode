@@ -1,5 +1,5 @@
 import type { JSX } from 'react'
-import 'styles/divider.scss'
+import '@/styles/divider.scss'
 
 type Props = {
   width: string | number

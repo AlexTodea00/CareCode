@@ -1,5 +1,5 @@
 import type { FunctionComponent, JSX, SVGProps } from 'react'
-import 'styles/formSection.scss'
+import '@/styles/formSection.scss'
 import type React from 'react'
 
 type Props = {
@@ -21,7 +21,7 @@ function FormSection({
     <section className="section-wrapper">
       <div className="wrapper">
         <div className={`icon-wrapper ${className}`}>
-          <Icon />
+          <Icon width={24} height={24} />
         </div>
         <div>
           <h2>{header}</h2>

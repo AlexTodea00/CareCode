@@ -16,10 +16,12 @@ function Page({ children, title, description }: Props): JSX.Element {
     <main>
       <div className="wrapper">
         <CareCodeLogo id="logo" width={124} height={124} />
-        <div>
+        <div className=" flex-2">
           <h1>{title}</h1>
           <Divider width={'150px'} />
-          <p id="description">{description}</p>
+          <p className=" flex-2 p-[0.5rem 0 0 0]" id="description">
+            {description}
+          </p>
         </div>
       </div>
       {children}

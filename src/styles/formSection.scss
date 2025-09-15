@@ -21,6 +21,11 @@
         background-color: var.$lighter-blue;
         border: 1px solid var.$border-colour-light-blue;
     }
+
+    &.heart {
+        background-color: var.$lighter-red;
+        border: 1px solid var.$border-colour-light-red;
+    }
 }
 
 h2 {
