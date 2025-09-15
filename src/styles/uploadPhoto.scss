@@ -1,5 +1,8 @@
 #upload-photo {
     margin-top: 2rem;
+    display: flex;
+    gap: var.$space-s;
+    align-items: center;
 }
 
 #avatar {
@@ -11,4 +14,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+// label {
+//     width: max-content;
+//     border: 1px solid var.$border-colour-light-blue;
+//     font-size: var.$font-size-s;
+//     font-weight: var.$font-bold;
+//     box-shadow: var.$black-shadow;
+//     padding: var.$space-xs;
+//     border-radius: 8px;
+//     cursor: pointer;
+// }
+
+p {
+    margin-top: var.$space-s;
+}
+
+#upload-button {
+    display: none;
 }

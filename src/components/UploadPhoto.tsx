@@ -8,6 +8,13 @@ function UploadPhoto(): JSX.Element {
       <div id="avatar">
         <PersonIcon width={48} height={48} />
       </div>
+      <div>
+        <label htmlFor="upload-button">
+          Upload image
+          <input id="upload-button" type="file" title="Upload photo"></input>
+        </label>
+        <p>For identification purposes</p>
+      </div>
     </div>
   )
 }
