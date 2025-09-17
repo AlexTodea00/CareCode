@@ -1,10 +1,10 @@
 import type { JSX } from 'react'
-import '@/styles/divider.scss'
+import styles from '@/styles/divider.module.scss'
 
 type Props = {
   width: string | number
 }
 
 export default function Divider({ width }: Props): JSX.Element {
-  return <div id="divider" style={{ width: width }}></div>
+  return <div className={styles.divider} style={{ width: width }}></div>
 }

@@ -1,11 +1,11 @@
-#upload-photo {
+.upload-photo {
     margin-top: 3rem;
     display: flex;
     gap: var.$space-s;
     align-items: center;
 }
 
-#avatar {
+.avatar {
     height: 6rem;
     width: 6rem;
     border-radius: 1000px;
@@ -14,9 +14,4 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-
-#upload-button {
-    display: none;
 }

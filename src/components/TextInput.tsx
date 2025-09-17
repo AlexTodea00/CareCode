@@ -4,7 +4,7 @@ import { Label } from './ui/label'
 
 type Props = {
   placeholder: string
-  label: string
+  label?: string
   className?: string
 }
 

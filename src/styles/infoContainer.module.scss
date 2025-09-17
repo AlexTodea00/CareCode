@@ -1,0 +1,14 @@
+.container {
+    margin-top: var.$space-s;
+    width: 100%;
+    background-color: var.$lighter-grey;
+    border: 1px solid var.$border-colour-light-grey;
+    height: 3rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+
+    p {
+        margin-left: var.$space-xs;
+    }
+}

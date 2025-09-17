@@ -26,6 +26,11 @@
         background-color: var.$lighter-red;
         border: 1px solid var.$border-colour-light-red;
     }
+
+    &.phone {
+        background-color: var.$lighter-green;
+        border: 1px solid var.$border-colour-light-green;
+    }
 }
 
 h2 {

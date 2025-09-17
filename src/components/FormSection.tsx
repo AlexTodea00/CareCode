@@ -1,5 +1,7 @@
 import type { FunctionComponent, JSX, SVGProps } from 'react'
-import '@/styles/formSection.scss'
+import styles from '@/styles/formSection.module.scss'
+import generalStyles from '@/styles/general.module.scss'
+
 import type React from 'react'
 
 type Props = {
@@ -18,9 +20,9 @@ function FormSection({
   Icon,
 }: Props): JSX.Element {
   return (
-    <section className="section-wrapper">
-      <div className="wrapper">
-        <div className={`icon-wrapper ${className}`}>
+    <section className={styles['section-wrapper']}>
+      <div className={generalStyles.wrapper}>
+        <div className={`${styles['icon-wrapper']} ${styles[className]}`}>
           <Icon width={24} height={24} />
         </div>
         <div>
