@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    gap: var.$space-xs;
+    align-items: flex-end;
+
+    @media screen and (max-width: 700px) {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    svg {
+        fill: green;
+    }
+
+    button {
+        background-color: var.$lighter-green;
+        border: 1px solid var.$border-colour-light-green;
+        cursor: pointer;
+        color: green;
+    }
+}

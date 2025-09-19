@@ -1,72 +1,57 @@
-import type { JSX } from 'react'
+import { useState, type JSX } from 'react'
 import Page from '@/components/Page'
-import FormSection from '@/components/FormSection'
-import UploadPhoto from '@/components/UploadPhoto'
-import PersonIcon from '@/assets/icons/person.svg?react'
-import HeartIcon from '@/assets/icons/heart.svg?react'
-import PhoneIcon from '@/assets/icons/phone.svg?react'
-import TextInput from '@/components/TextInput'
-import DropdownInput from '@/components/DropdownInput'
-import { BLOOD_TYPE } from '@/utils/general'
-import InfoContainer from '@/components/InfoContainer'
+import ProfileSection from '@/components/ProfileSection'
+import MedicalSection from '@/components/MedicalSection'
+import ContactSection from '@/components/ContactSection'
+import AdditionalSection from '@/components/AdditionalSection'
+import { Button } from '@/components/ui/button'
+import type { MedicalInfo } from '@/types/medicalInfo'
 
 function CareCodeForm(): JSX.Element {
+  const [medicalInfo, setMedicalInfo] = useState<MedicalInfo>({
+    allergies: [],
+    medications: [],
+    conditions: [],
+  })
+
+  const handleAddClick = (
+    prop: 'allergies' | 'conditions' | 'medications',
+    value: string,
+  ) => {
+    switch (prop) {
+      case 'allergies':
+        setMedicalInfo({
+          ...medicalInfo,
+          allergies: [...medicalInfo.allergies, value],
+        })
+        break
+      case 'conditions':
+        setMedicalInfo({
+          ...medicalInfo,
+          conditions: [...medicalInfo.conditions, value],
+        })
+        break
+      case 'medications':
+        setMedicalInfo({
+          ...medicalInfo,
+          medications: [...medicalInfo.medications, value],
+        })
+        break
+    }
+  }
+
   return (
     <Page title="CareCode" description="EMERGENCY MEDICAL INFORMATION">
-      <FormSection
-        header="Personal Information"
-        description="BASIC IDENTITY"
-        className="person"
-        Icon={PersonIcon}
-      >
-        <UploadPhoto />
-        <div className="flex mt-5 gap-4">
-          <TextInput
-            className="max-w-full flex-1"
-            placeholder="Enter your full name"
-            label="First name*"
-          />
-          <TextInput
-            className="max-w-full flex-1"
-            placeholder="dd/mm/yyyy"
-            label="Date of birth*"
-          />
-        </div>
-        <DropdownInput items={BLOOD_TYPE} />
-      </FormSection>
-      <FormSection
-        header="Medical Information"
-        description="HEALTH DETAILS"
-        Icon={HeartIcon}
-        className="heart"
-      >
-        <TextInput
-          label="Allergies"
-          className="mt-3 max-w-full flex-1"
-          placeholder="Add allergy..."
-        />
-        <InfoContainer content={[]} placeholder={'No allergies recorded'} />
-        <TextInput
-          label="Medications"
-          className="mt-3 max-w-full flex-1"
-          placeholder="Add medication..."
-        />
-        <InfoContainer content={[]} placeholder={'No medication recorded'} />
-        <TextInput
-          label="Medical conditions"
-          className="mt-3 max-w-full flex-1"
-          placeholder="Add condition..."
-        />
-        <InfoContainer content={[]} placeholder={'No conditions recorded'} />
-      </FormSection>
-      <FormSection
-        header={'Emergency Contacts'}
-        description={'CONTACT LIST'}
-        className={'phone'}
-        Icon={PhoneIcon}
-      >
-        <div></div>
-      </FormSection>
+      <ProfileSection />
+      <MedicalSection
+        allergies={medicalInfo.allergies}
+        medications={medicalInfo.medications}
+        conditions={medicalInfo.conditions}
+        onAddButtonClick={handleAddClick}
+      />
+      <ContactSection />
+      <AdditionalSection />
+      <Button className="mt-3 w-full cursor-pointer">Submit</Button>
     </Page>
   )
 }

@@ -1,0 +1,19 @@
+.pill {
+    padding: var.$space-xs;
+    background-color: var.$lighter-blue;
+    border: 1px solid var.$border-colour-light-blue;
+    color: var.$darker-blue;
+    font-size: var.$font-size-s;
+    font-weight: var.$font-bold;
+    border-radius: 12px;
+    width: max-content;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+
+
+    svg {
+        fill: var.$darker-blue;
+        margin-left: auto;
+    }
+}

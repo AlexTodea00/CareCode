@@ -15,3 +15,16 @@
     justify-content: center;
     align-items: center;
 }
+
+.upload-button {
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: var.$lighter-grey;
+    border: 1px solid var.$border-colour-light-grey;
+    padding: var.$space-xs
+}
+
+.picture {
+    object-fit: contain;
+    border-radius: 1000px;
+}

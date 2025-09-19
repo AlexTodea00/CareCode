@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    gap: var.$space-xs;
+    align-items: flex-end;
+
+    button {
+        cursor: pointer;
+        background-color: var.$lighter-red;
+
+        svg {
+            fill: var.$red;
+        }
+    }
+}

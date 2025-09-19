@@ -83,7 +83,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width: 100%;
 }
 
 .dark {
@@ -130,15 +129,6 @@
   }
 
   body {
-    display: flex;
-    justify-content: center;
-    min-width: 320px;
-    min-height: 100vh;
     color: black;
-  }
-
-  body > * {
-    width: 60%;
-    padding: 1rem; /* mobile padding */
   }
 }
