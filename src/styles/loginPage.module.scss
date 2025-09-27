@@ -1,0 +1,35 @@
+.container {
+    box-shadow: var.$black-shadow;
+    border: 1px solid var.$border-colour-light-grey;
+    border-radius: 12px;
+    margin-top: 64px;
+    padding: var.$space-s;
+}
+
+.tabs {
+    div {
+        width: 100%
+    }
+}
+
+.form {
+    .text-center {
+        text-align: center;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    h2 {
+        margin-top: var.$space-s;
+        font-weight: var.$font-bold;
+    }
+
+    button {
+        width: 100%;
+        margin-top: var.$space-s;
+    }
+
+
+}

@@ -13,9 +13,9 @@ type Props = {
 
 function Page({ children, title, description }: Props): JSX.Element {
   return (
-    <main>
+    <main className={styles.main}>
       <div className={generalStyles.wrapper}>
-        <CareCodeLogo className={styles.logo} width={124} height={124} />
+        <CareCodeLogo className={styles.logo} width={100} height={100} />
         <div className="flex-1">
           <h1>{title}</h1>
           <Divider width={'150px'} />

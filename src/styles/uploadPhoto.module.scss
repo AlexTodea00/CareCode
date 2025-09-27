@@ -21,7 +21,12 @@
     border-radius: 8px;
     background-color: var.$lighter-grey;
     border: 1px solid var.$border-colour-light-grey;
-    padding: var.$space-xs
+    padding: var.$space-xs;
+
+    &.error {
+        color: var.$destructive;
+        border: 1px solid var.$destructive
+    }
 }
 
 .picture {

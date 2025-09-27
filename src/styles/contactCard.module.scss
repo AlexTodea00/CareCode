@@ -1,0 +1,48 @@
+.card {
+    margin-top: var.$space-s;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var.$space-xl;
+    background-color: var.$lighter-grey;
+    border: 1px solid var.$border-colour-light-grey;
+    border-radius: 8px;
+    padding: var.$space-s ;
+
+    button {
+        margin-left: auto;
+        background-color: var.$lighter-red;
+        border: 1px solid var.$border-colour-light-red;
+
+        svg {
+            fill: var.$red;
+        }
+    }
+
+    @media screen and (max-width: 700px) {
+        flex-direction: column;
+        align-items: flex-start;
+
+        button {
+            width: 100%;
+        }
+
+
+    }
+}
+
+.container {
+    max-width: 25rem;
+
+    @media screen and (max-width: 700px) {
+        max-width: 15.625rem;
+    }
+
+    p {
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 14px;
+        font-weight: var.$font-semi-bold;
+    }
+}

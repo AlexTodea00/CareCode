@@ -4,11 +4,12 @@ import CrossIcon from '@/assets/icons/cross_icon.svg?react'
 
 type Props = {
   children: React.ReactNode
+  onClick: () => void
 }
 
-export default function Pill({ children }: Props): JSX.Element {
+export default function Pill({ children, onClick }: Props): JSX.Element {
   return (
-    <div className={styles.pill}>
+    <div onClick={onClick} className={styles.pill}>
       {children} <CrossIcon width={16} height={16} />
     </div>
   )

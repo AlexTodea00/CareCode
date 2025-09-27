@@ -4,11 +4,11 @@
     align-items: flex-end;
 
     button {
-        cursor: pointer;
-        background-color: var.$lighter-red;
+        background-color: var.$lighter-blue;
+        border: 1px solid var.$border-colour-light-blue;
 
         svg {
-            fill: var.$red;
+            fill: blue;
         }
     }
 }

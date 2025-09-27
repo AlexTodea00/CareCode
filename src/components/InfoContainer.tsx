@@ -5,15 +5,27 @@ import Pill from './Pill'
 type Props = {
   content: string[]
   placeholder: string
+  onClick: (
+    category: 'allergies' | 'medications' | 'conditions',
+    clickedValue: string,
+  ) => void
+  category: 'allergies' | 'medications' | 'conditions'
 }
 
-function InfoContainer({ content, placeholder }: Props): JSX.Element {
+function InfoContainer({
+  content,
+  placeholder,
+  onClick,
+  category,
+}: Props): JSX.Element {
   return (
     <div className={styles.container}>
       {content.length > 0 && (
         <div className={styles['pill-wrapper']}>
           {content.map(dta => (
-            <Pill key={dta}>{dta}</Pill>
+            <Pill onClick={() => onClick(category, dta)} key={dta}>
+              {dta}
+            </Pill>
           ))}
         </div>
       )}
