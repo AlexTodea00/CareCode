@@ -165,7 +165,7 @@ function CareCodeForm(): JSX.Element {
   }
 
   return (
-    <Page title="CareCode" description="EMERGENCY MEDICAL INFORMATION">
+    <Page description="EMERGENCY MEDICAL INFORMATION">
       <FormProvider {...form}>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} noValidate>

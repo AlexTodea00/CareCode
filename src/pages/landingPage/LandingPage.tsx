@@ -1,11 +1,12 @@
 import NavBar from '@/components/NavBar'
-import Page from '@/components/Page'
 import type { JSX } from 'react'
+import PresentationPage from './PresentationPage'
 
 function LandingPage(): JSX.Element {
   return (
     <main>
       <NavBar />
+      <PresentationPage />
     </main>
   )
 }

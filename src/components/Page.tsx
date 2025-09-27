@@ -4,20 +4,20 @@ import CareCodeLogo from '../assets/illustrations/carecode_logo.svg?react'
 import Divider from './Divider'
 import styles from '@/styles/page.module.scss'
 import generalStyles from '@/styles/general.module.scss'
+import CareCodeTitle from './CareCodeTitle'
 
 type Props = {
   children: React.ReactNode
-  title: string
   description?: string
 }
 
-function Page({ children, title, description }: Props): JSX.Element {
+function Page({ children, description }: Props): JSX.Element {
   return (
     <main className={styles.main}>
       <div className={generalStyles.wrapper}>
         <CareCodeLogo className={styles.logo} width={100} height={100} />
         <div className="flex-1">
-          <h1>{title}</h1>
+          <CareCodeTitle />
           <Divider width={'150px'} />
           <p className="mt-1.5 p-[0.5rem 0 0 0] text-center" id="description">
             {description}

@@ -9,7 +9,7 @@ import RegisterForm from './RegisterForm'
 
 function LoginPage(): JSX.Element {
   return (
-    <Page title={'CareCode'} description="EMERGENCY MEDICAL INFORMATION">
+    <Page description="EMERGENCY MEDICAL INFORMATION">
       <section className={styles.container}>
         <Tabs className={styles.tabs} defaultValue="login">
           <TabsList>
