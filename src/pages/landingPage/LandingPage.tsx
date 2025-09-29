@@ -1,6 +1,7 @@
 import NavBar from '@/components/NavBar'
 import type { JSX } from 'react'
-import PresentationPage from './PresentationPage'
+import HowItWorksPage from './howItWorks/HowItWorksPage'
+import PresentationPage from './presentation/PresentationPage'
 
 function LandingPage(): JSX.Element {
   return (
@@ -8,6 +9,7 @@ function LandingPage(): JSX.Element {
       <NavBar />
       <main className="p-4">
         <PresentationPage />
+        <HowItWorksPage />
       </main>
     </>
   )

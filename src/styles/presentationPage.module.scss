@@ -43,8 +43,9 @@
 .button {
     margin-top: var.$space-xl;
     margin-right: var.$space-s;
-
-    padding: 32px;
+    font-size: 14px;
+    width: 130px;
+    height: 64px;
 
     &.primary {
         background-color: var.$red;
