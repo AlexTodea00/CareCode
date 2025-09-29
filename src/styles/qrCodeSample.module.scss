@@ -1,6 +1,6 @@
 .container {
     box-shadow: var.$black-shadow;
-    height: max-content;
+    height: 400px;
     width: 300px;
     border-radius: 12px;
     padding: var.$space-s;
@@ -23,7 +23,7 @@
     flex-direction: column;
     background-color: var.$lighter-red;
     width: 145px;
-    height: 145px;
+    height: 300px;
     border-radius: 12px;
 
     svg {

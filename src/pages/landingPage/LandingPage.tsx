@@ -4,10 +4,12 @@ import PresentationPage from './PresentationPage'
 
 function LandingPage(): JSX.Element {
   return (
-    <main>
+    <>
       <NavBar />
-      <PresentationPage />
-    </main>
+      <main className="p-4">
+        <PresentationPage />
+      </main>
+    </>
   )
 }
 

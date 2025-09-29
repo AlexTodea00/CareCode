@@ -25,6 +25,7 @@
 .hamburger-header {
     display: none; // default hidden
     margin-bottom: var.$space-xs;
+    border: 1px solid var.$border-colour-light-grey;
 
     button {
         margin-left: auto;
