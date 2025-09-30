@@ -1,14 +1,16 @@
 import type { JSX } from 'react'
-import styles from '@/styles/howItWorks.module.scss'
+import styles from '@/styles/landingPageGeneral.module.scss'
 import StepCard from './Card'
 import EditIcon from '@/assets/icons/edit.svg?react'
 import QRCodeIcon from '@/assets/icons/qr_icon_small.svg?react'
 import AmbulanceIcon from '@/assets/icons/ambulance.svg?react'
 import HeartIcon from '@/assets/icons/heart_small.svg?react'
+import { Button } from '@/components/ui/button'
+import type { RefType } from '../LandingPage'
 
-export default function HowItWorksPage(): JSX.Element {
+export default function HowItWorksPage({ ref }: RefType): JSX.Element {
   return (
-    <section className={styles.container}>
+    <section ref={ref} className={styles.container}>
       <h1 className={styles.title}>How CareCode works</h1>
       <p className={styles.subtitle}>
         A simple four-step process that could save your life in an emergency
@@ -43,6 +45,9 @@ export default function HowItWorksPage(): JSX.Element {
           Icon={HeartIcon}
         />
       </div>
+      <Button className={styles['get-started']}>
+        Sign up for CareCode now
+      </Button>
     </section>
   )
 }

@@ -38,7 +38,8 @@
 }
 
 .hamburger-content {
-    // display: none; // default hidden
+    position: sticky;
+    display: none; // default hidden
     flex-direction: column;
     align-items: flex-start;
     gap: var.$space-s;
