@@ -7,8 +7,12 @@ import AmbulanceIcon from '@/assets/icons/ambulance.svg?react'
 import HeartIcon from '@/assets/icons/heart_small.svg?react'
 import { Button } from '@/components/ui/button'
 import type { RefType } from '../LandingPage'
+import { useNavigate } from 'react-router-dom'
+import { LOGIN_PATH } from '@/utils/paths'
 
 export default function HowItWorksPage({ ref }: RefType): JSX.Element {
+  const navigate = useNavigate()
+
   return (
     <section ref={ref} className={styles.container}>
       <h1 className={styles.title}>How CareCode works</h1>
@@ -45,7 +49,10 @@ export default function HowItWorksPage({ ref }: RefType): JSX.Element {
           Icon={HeartIcon}
         />
       </div>
-      <Button className={styles['get-started']}>
+      <Button
+        onClick={() => navigate(`${LOGIN_PATH}?defaultValue=register`)}
+        className={styles['get-started']}
+      >
         Sign up for CareCode now
       </Button>
     </section>

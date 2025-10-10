@@ -8,8 +8,12 @@ import LockIcon from '@/assets/icons/lock.svg?react'
 import UpdateIcon from '@/assets/icons/update.svg?react'
 import { Button } from '@/components/ui/button'
 import type { RefType } from '../LandingPage'
+import { LOGIN_PATH } from '@/utils/paths'
+import { useNavigate } from 'react-router-dom'
 
 export default function FeaturesPage({ ref }: RefType): JSX.Element {
+  const navigate = useNavigate()
+
   return (
     <section ref={ref} className={`${styles.container} bg-[#f9fafb]`}>
       <h1 className={styles.title}>Features that Save Lives </h1>
@@ -55,7 +59,12 @@ export default function FeaturesPage({ ref }: RefType): JSX.Element {
           Icon={UpdateIcon}
         />
       </div>
-      <Button className={styles['get-started']}>Get yours now!</Button>
+      <Button
+        onClick={() => navigate(`${LOGIN_PATH}?defaultValue=register`)}
+        className={styles['get-started']}
+      >
+        Get yours now!
+      </Button>
     </section>
   )
 }

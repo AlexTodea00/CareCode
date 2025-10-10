@@ -6,6 +6,7 @@ import react from 'eslint-plugin-react-x'
 import tseslint from 'typescript-eslint'
 import { defineConfig } from 'eslint/config'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
+import reactHooks from 'eslint-plugin-react-hooks'
 
 export default defineConfig({
   files: ['**/*.ts', '**/*.tsx'],
@@ -15,6 +16,7 @@ export default defineConfig({
     tseslint.configs.recommended,
     react.configs.recommended,
     eslintPluginPrettierRecommended,
+    reactHooks.configs.flat.recommended,
   ],
   languageOptions: {
     parser: tseslint.parser,

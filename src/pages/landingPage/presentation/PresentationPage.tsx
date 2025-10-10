@@ -1,11 +1,24 @@
-import type { JSX } from 'react'
+import type { JSX, RefObject } from 'react'
 import styles from '@/styles/presentationPage.module.scss'
 import { Button } from '@/components/ui/button'
 import QRCodeSample from './QRCodeSample'
 import { Badge } from '@/components/ui/badge'
 import type { RefType } from '../LandingPage'
+import { useNavigate } from 'react-router-dom'
+import { LOGIN_PATH } from '@/utils/paths'
 
-export default function PresentationPage({ ref }: RefType): JSX.Element {
+type PresentationPageTypes = RefType & {
+  onClick: (ref: RefObject<HTMLElement>) => void
+  howItWorksRef: RefObject<HTMLElement>
+}
+
+export default function PresentationPage({
+  ref,
+  onClick,
+  howItWorksRef,
+}: PresentationPageTypes): JSX.Element {
+  const navigate = useNavigate()
+
   return (
     <section ref={ref} className={styles.section}>
       <div>
@@ -18,12 +31,17 @@ export default function PresentationPage({ ref }: RefType): JSX.Element {
           medical information through a simple QR code sticker. Because in an
           emergency, every second counts.
         </p>
-        <Button className={`${styles.button} ${styles.primary}`} type="button">
+        <Button
+          onClick={() => navigate(`${LOGIN_PATH}?defaultValue=register`)}
+          className={`${styles.button} ${styles.primary}`}
+          type="button"
+        >
           Get yours
         </Button>
         <Button
           className={`${styles.button} ${styles.secondary}`}
           type="button"
+          onClick={() => onClick(howItWorksRef)}
         >
           How it works
         </Button>

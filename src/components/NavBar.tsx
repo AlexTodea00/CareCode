@@ -4,6 +4,8 @@ import styles from '@/styles/navbar.module.scss'
 import { Button } from './ui/button'
 import HamburgerIcon from '@/assets/icons/hamburger.svg?react'
 import CrossIcon from '@/assets/icons/cross_icon.svg?react'
+import { useNavigate } from 'react-router-dom'
+import { LOGIN_PATH } from '@/utils/paths'
 
 type SectionRefs = {
   presentation: RefObject<HTMLElement>
@@ -15,10 +17,12 @@ type SectionRefs = {
 
 type Props = {
   sectionRefs: SectionRefs
+  onClick: (ref: RefObject<HTMLElement>) => void
 }
 
-function NavBar({ sectionRefs }: Props): JSX.Element {
+function NavBar({ sectionRefs, onClick }: Props): JSX.Element {
   const [isOpen, setIsOpen] = useState<boolean>(false)
+  const navigate = useNavigate()
 
   const menuItems = [
     { label: 'How it works', ref: sectionRefs.howItWorks },
@@ -27,15 +31,11 @@ function NavBar({ sectionRefs }: Props): JSX.Element {
     { label: 'FAQ', ref: sectionRefs.faq },
   ]
 
-  const onClick = (ref: RefObject<HTMLElement>) => {
-    ref.current?.scrollIntoView({ behavior: 'smooth' })
-  }
-
   return (
-    <nav>
+    <nav className={styles.nav}>
       <ul className={styles['navbar-content']}>
         <img
-          className={styles.image}
+          className={`${styles.image} cursor-pointer`}
           width={80}
           height={80}
           src={CareCodeLogo}
@@ -47,18 +47,23 @@ function NavBar({ sectionRefs }: Props): JSX.Element {
             {item.label}
           </li>
         ))}
-        <Button className={styles['get-started']} type="button">
+        <Button
+          onClick={() => navigate(`${LOGIN_PATH}?defaultValue=register`)}
+          className={styles['get-started']}
+          type="button"
+        >
           Get started
         </Button>
       </ul>
 
       <div className={styles['hamburger-header']}>
         <img
-          className={styles.image}
+          className={`${styles.image} cursor-pointer`}
           width={80}
           height={80}
           src={CareCodeLogo}
           alt=""
+          onClick={() => scrollTo(0, 0)}
         />
         {!isOpen ? (
           <button>
