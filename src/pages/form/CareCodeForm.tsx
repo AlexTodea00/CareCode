@@ -17,7 +17,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Form } from '@/components/ui/form'
 import type { ContactInfo } from '@/types/contactInfo'
 import { DOB_REGEX } from '@/utils/general'
-import { Loader2Icon } from 'lucide-react'
 
 export type FormType = {
   fullName: string
