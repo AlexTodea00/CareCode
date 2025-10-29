@@ -7,9 +7,14 @@ import CrossIcon from '@/assets/icons/cross_icon.svg?react'
 type Props = {
   content: ContactInfo
   onClick: (contact: ContactInfo) => void
+  readOnly?: boolean
 }
 
-export default function ContactCard({ content, onClick }: Props): JSX.Element {
+export default function ContactCard({
+  readOnly = false,
+  content,
+  onClick,
+}: Props): JSX.Element {
   const { contactName, phoneNumber, relationship } = content
 
   return (
@@ -19,14 +24,16 @@ export default function ContactCard({ content, onClick }: Props): JSX.Element {
         <p>{phoneNumber}</p>
         <p>{relationship}</p>
       </div>
-      <Button
-        onClick={() => {
-          onClick(content)
-        }}
-        type="button"
-      >
-        <CrossIcon />
-      </Button>
+      {!readOnly && (
+        <Button
+          onClick={() => {
+            onClick(content)
+          }}
+          type="button"
+        >
+          <CrossIcon />
+        </Button>
+      )}
     </div>
   )
 }

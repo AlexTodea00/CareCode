@@ -1,0 +1,30 @@
+.navbar-content {
+    display: flex;
+    border-bottom: 1px solid var.$border-colour-light-grey;
+    align-items: center;
+    padding-right: var.$space-s;
+    gap: var.$space-xl;
+}
+
+.bell {
+    position: relative;
+    margin-left: auto;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.red-dot {
+    position: absolute;
+    border-radius: 100%;
+    z-index: 1;
+    right: 2px;
+    width: 8px;
+    height: 8px;
+    background-color: var.$red;
+}
+
+.nav {
+    position: sticky
+}

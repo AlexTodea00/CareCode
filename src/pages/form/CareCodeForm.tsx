@@ -17,6 +17,12 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Form } from '@/components/ui/form'
 import type { ContactInfo } from '@/types/contactInfo'
 import { DOB_REGEX } from '@/utils/general'
+import { useNavigate } from 'react-router-dom'
+import { CHECKOUT_PATH } from '@/utils/paths'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
+import DialogComponent from './DialogComponent'
+import FieldError from '@/components/FieldError'
 
 export type FormType = {
   fullName: string
@@ -30,6 +36,7 @@ export type FormType = {
   phoneNumber?: string
   relationship?: string
   additionalInfo?: string
+  termsAndConditions: boolean
 }
 
 const Schema: yup.ObjectSchema<FormType> = yup.object<FormType>().shape({
@@ -52,6 +59,10 @@ const Schema: yup.ObjectSchema<FormType> = yup.object<FormType>().shape({
   phoneNumber: yup.string(),
   relationship: yup.string(),
   additionalInfo: yup.string(),
+  termsAndConditions: yup
+    .boolean()
+    .oneOf([true], 'You must accept the terms and conditions')
+    .required('You must accept the terms and conditions'),
 })
 
 function CareCodeForm(): JSX.Element {
@@ -70,13 +81,35 @@ function CareCodeForm(): JSX.Element {
       fullName: '',
       dob: '',
       bloodType: '',
+      termsAndConditions: false,
     },
   })
 
-  const onSubmit: SubmitHandler<FormType> = (dta: FormType) => {
-    console.log(dta)
+  const sessionStorage = window.sessionStorage
+  const navigate = useNavigate()
 
-    form.reset()
+  const onSubmit: SubmitHandler<FormType> = (dta: FormType) => {
+    sessionStorage.setItem(
+      'personalInfo',
+      JSON.stringify({
+        fullName: dta.fullName,
+        dob: dta.dob,
+        bloodType: dta.bloodType,
+      }),
+    )
+    sessionStorage.setItem(
+      'medicalInfo',
+      JSON.stringify({
+        allergies: medicalInfo.allergies,
+        medications: medicalInfo.medications,
+        conditions: medicalInfo.conditions,
+      }),
+    )
+    sessionStorage.setItem('contacts', JSON.stringify(contacts))
+    sessionStorage.setItem('additionalInfo', dta.additionalInfo)
+    sessionStorage.setItem('termsAndConditions', String(dta.termsAndConditions))
+
+    navigate(CHECKOUT_PATH)
   }
 
   const handleAddClick = (
@@ -182,8 +215,31 @@ function CareCodeForm(): JSX.Element {
               contacts={contacts}
             />
             <AdditionalSection />
+            <div className="mt-4 mb-4">
+              <div className="flex items-center gap-1 mb-4">
+                <Checkbox
+                  id="terms"
+                  onCheckedChange={checked =>
+                    form.setValue('termsAndConditions', checked === true)
+                  }
+                  {...form.register('termsAndConditions')}
+                />
+                <Label htmlFor="terms" className="gap-1">
+                  I agree with the
+                </Label>
+                <DialogComponent title="T&C" description="Insert T&C here...">
+                  <a className="text-sm inline-block cursor-pointer underline text-[#e2392f]">
+                    terms and conditions
+                  </a>
+                </DialogComponent>
+              </div>
+              {form.formState.errors.termsAndConditions && (
+                <FieldError
+                  error={form.formState.errors.termsAndConditions.message}
+                />
+              )}
+            </div>
             <Button type="submit" className="mt-3 w-full cursor-pointer">
-              {/* <Loader2Icon className="animate-spin" /> */}
               Submit
             </Button>
           </form>

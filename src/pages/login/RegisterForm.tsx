@@ -10,7 +10,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { EMAIL_REGEX, INPUT_MAX_LENGTH, PASSWORD_REGEX } from '@/utils/general'
 import { yupResolver } from '@hookform/resolvers/yup'
-import type { JSX } from 'react'
+import { type JSX } from 'react'
 import { useForm, type Resolver } from 'react-hook-form'
 import * as yup from 'yup'
 import EmailIcon from '@/assets/icons/email.svg?react'
@@ -18,6 +18,8 @@ import PasswordIcon from '@/assets/icons/password.svg?react'
 import styles from '@/styles/loginPage.module.scss'
 import { Button } from '@/components/ui/button'
 import RegisterIcon from '@/assets/icons/sign_in.svg?react'
+import { useNavigate } from 'react-router-dom'
+import { MEDICAL_FORM_PATH } from '@/utils/paths'
 
 type RegisterFormType = {
   email: string
@@ -44,10 +46,21 @@ const LoginSchema: yup.ObjectSchema<RegisterFormType> = yup.object().shape({
 function RegisterForm(): JSX.Element {
   const form = useForm<RegisterFormType>({
     resolver: yupResolver(LoginSchema) as Resolver<RegisterFormType>,
+    defaultValues: {
+      email: '',
+      password: '',
+      confirmPassword: '',
+    },
   })
 
-  const onSubmit = (dta: RegisterFormType) => {
-    console.log(dta)
+  const navigate = useNavigate()
+  const sessionStorage = window.sessionStorage
+
+  const onSubmit = async (dta: RegisterFormType): Promise<void> => {
+    sessionStorage.setItem('email', dta.email)
+    sessionStorage.setItem('password', dta.password)
+    form.reset()
+    navigate(MEDICAL_FORM_PATH)
   }
 
   return (
@@ -127,7 +140,7 @@ function RegisterForm(): JSX.Element {
           )}
         />
         <Button>
-          <RegisterIcon />
+          <RegisterIcon className={styles.white} />
           Register
         </Button>
       </form>

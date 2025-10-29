@@ -1,0 +1,23 @@
+.menu {
+    margin: 0 var.$space-s;
+
+
+    button {
+        width: 100%;
+        text-align: start;
+        padding: var.$space-s;
+        border-bottom: 1px solid var.$lighter-grey;
+        border-radius: 8px;
+
+        &:hover {
+            background-color: var.$lighter-red;
+        }
+
+
+    }
+}
+
+.active {
+    color: var.$red;
+    background-color: var.$lighter-red;
+}

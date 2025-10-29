@@ -1,5 +1,6 @@
 import type { JSX, RefObject } from 'react'
 import styles from '@/styles/presentationPage.module.scss'
+import button from '@/styles/button.module.scss'
 import { Button } from '@/components/ui/button'
 import QRCodeSample from './QRCodeSample'
 import { Badge } from '@/components/ui/badge'
@@ -33,13 +34,13 @@ export default function PresentationPage({
         </p>
         <Button
           onClick={() => navigate(`${LOGIN_PATH}?defaultValue=register`)}
-          className={`${styles.button} ${styles.primary}`}
+          className={`${button.button} ${button.primary}`}
           type="button"
         >
           Get yours
         </Button>
         <Button
-          className={`${styles.button} ${styles.secondary}`}
+          className={`${button.button} ${button.secondary}`}
           type="button"
           onClick={() => onClick(howItWorksRef)}
         >

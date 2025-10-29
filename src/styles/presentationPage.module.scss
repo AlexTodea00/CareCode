@@ -41,20 +41,3 @@
     max-width: 500px;
     color: var.$grey;
 }
-
-.button {
-    margin-top: var.$space-xl;
-    margin-right: var.$space-s;
-    font-size: 14px;
-    width: 130px;
-    height: 64px;
-
-    &.primary {
-        background-color: var.$red;
-    }
-
-    &.secondary {
-        background-color: var.$lighter-red;
-        color: red;
-    }
-}

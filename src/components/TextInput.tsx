@@ -5,11 +5,13 @@ import type { UseFormRegisterReturn } from 'react-hook-form'
 import { INPUT_MAX_LENGTH } from '@/utils/general'
 
 type Props = {
-  placeholder: string
+  placeholder?: string
   label?: string
   className?: string
-  register: UseFormRegisterReturn
+  register?: UseFormRegisterReturn
   maxLength?: number
+  value?: string
+  disabled?: boolean
 }
 
 function TextInput({
@@ -18,6 +20,8 @@ function TextInput({
   className,
   register,
   maxLength = INPUT_MAX_LENGTH,
+  value,
+  disabled,
 }: Props): JSX.Element {
   return (
     <div className={className}>
@@ -25,6 +29,8 @@ function TextInput({
         {label}
       </Label>
       <Input
+        disabled={disabled}
+        defaultValue={value}
         maxLength={maxLength}
         id="textInput"
         placeholder={placeholder}

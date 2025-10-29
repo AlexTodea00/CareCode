@@ -1,2 +1,5 @@
 export const LOGIN_PATH = '/login'
 export const MEDICAL_FORM_PATH = '/medicalForm'
+export const CHECKOUT_PATH = '/checkout'
+export const MY_ACCOUNT_PATH = '/myAccount'
+export const PUBLIC_MEDICAL_INFO = '/public/medicalInfo'

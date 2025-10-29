@@ -52,7 +52,9 @@ export default function ContactSection({
               relationship: form.watch('relationship'),
               phoneNumber: form.watch('phoneNumber'),
             })
-            form.reset({ contactName: '', relationship: '', phoneNumber: '' })
+            form.resetField('contactName')
+            form.resetField('relationship')
+            form.resetField('phoneNumber')
           }}
           type="button"
         >

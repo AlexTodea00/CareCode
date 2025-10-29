@@ -10,6 +10,7 @@ type Props = {
     clickedValue: string,
   ) => void
   category: 'allergies' | 'medications' | 'conditions'
+  readOnly?: boolean
 }
 
 function InfoContainer({
@@ -17,13 +18,18 @@ function InfoContainer({
   placeholder,
   onClick,
   category,
+  readOnly,
 }: Props): JSX.Element {
   return (
     <div className={styles.container}>
       {content.length > 0 && (
         <div className={styles['pill-wrapper']}>
           {content.map(dta => (
-            <Pill onClick={() => onClick(category, dta)} key={dta}>
+            <Pill
+              readOnly={readOnly}
+              onClick={() => onClick(category, dta)}
+              key={dta}
+            >
               {dta}
             </Pill>
           ))}
