@@ -3,7 +3,7 @@ import NavBarPlain from '@/components/NavBarPlain'
 import PersonalInfo from './PersonalInfo'
 import useUser from '@/hooks/useUser'
 import useAuth from '@/hooks/useAuth'
-import { Spinner } from '@/components/ui/spinner'
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 export const options = [
   { text: 'Personal info', value: 'personal_info' },
@@ -29,9 +29,7 @@ export default function MyAccount(): JSX.Element {
         isOpen={isOpen}
         selection={selection}
       />
-      {isLoading && !user && (
-        <Spinner width={64} height={64} className="flex justify-center" />
-      )}
+      {isLoading && !user && <LoadingSpinner />}
 
       {!isLoading && user && selection === 'personal_info' && (
         <PersonalInfo user={user} />

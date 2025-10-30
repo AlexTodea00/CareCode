@@ -1,9 +1,8 @@
 import type { CurrentUser } from '@/types/user'
-import type { JSX } from 'react'
+import { useState, type JSX } from 'react'
 import styles from '@/styles/personalInfo.module.scss'
 import FormSection from '@/components/FormSection'
 import HeartIcon from '@/assets/icons/heart.svg?react'
-import TextInput from '@/components/TextInput'
 import InfoContainer from '@/components/InfoContainer'
 import { Label } from '@/components/ui/label'
 import PhoneIcon from '@/assets/icons/phone.svg?react'
@@ -15,6 +14,16 @@ import { Button } from '@/components/ui/button'
 import button from '@/styles/button.module.scss'
 import DialogComponent from '../form/DialogComponent'
 import { QRCode } from 'react-qrcode-logo'
+import ItemComponent from '@/components/Item'
+import { Edit3Icon } from 'lucide-react'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { BLOOD_TYPE } from '@/utils/general'
 
 type Props = {
   user: CurrentUser
@@ -25,6 +34,8 @@ export default function PersonalInfo({
   user,
   isPrivate = true,
 }: Props): JSX.Element {
+  const [editMode, setEditMode] = useState<boolean>(false)
+
   return (
     <section className={styles.section}>
       <h1 className={styles.header}>
@@ -48,12 +59,17 @@ export default function PersonalInfo({
                 <div className={styles.qrcode}>
                   <QRCode
                     id="qrCode"
+                    eyeRadius={12}
                     logoHeight={64}
                     logoWidth={64}
                     logoOpacity={0.7}
                     logoPaddingStyle="circle"
                     logoImage="src/assets/illustrations/carecode_logo.svg"
-                    value="http://localhost:5173/public/medicalInfo?id=eUwfDbk3phPHrquhqif0Yg6wMpw1"
+                    value={`${import.meta.env.VITE_BASE_URL}/public/medicalInfo?id=${user.id}`}
+                  />
+                  <ItemComponent
+                    title="Note"
+                    description="If you chose to print your own sticker, use the above code."
                   />
                 </div>
               }
@@ -69,21 +85,32 @@ export default function PersonalInfo({
         </span>
       </div>
       <span className={styles.container}>
+        <Button onClick={() => setEditMode(!editMode)} variant="outline">
+          <Edit3Icon />
+          Edit info
+        </Button>
         <FormSection
           header={'Medical Info'}
           description={'Your medical information'}
           className={'heart'}
           Icon={HeartIcon}
         >
-          <TextInput
-            className="mt-4"
-            label="Blood type"
-            value={user.bloodType}
-            disabled
-          />
+          <Label className="mt-4 mb-2">Blood type</Label>
+          <Select disabled={!editMode} defaultValue={user.bloodType}>
+            <SelectTrigger className="w-[100%]">
+              <SelectValue placeholder="Select blood type" />
+            </SelectTrigger>
+            <SelectContent>
+              {BLOOD_TYPE.map(type => (
+                <SelectItem key={type.value} value={type.value}>
+                  {type.text}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
           <Label className="mt-4">Allergies</Label>
           <InfoContainer
-            readOnly
+            readOnly={!editMode}
             content={user.allergies}
             placeholder={'allergies'}
             category={'allergies'}
@@ -91,7 +118,7 @@ export default function PersonalInfo({
           ></InfoContainer>
           <Label className="mt-4">Medication</Label>
           <InfoContainer
-            readOnly
+            readOnly={!editMode}
             content={user.medications}
             placeholder={'medication'}
             category={'medications'}
@@ -99,7 +126,7 @@ export default function PersonalInfo({
           ></InfoContainer>
           <Label className="mt-4">Conditions</Label>
           <InfoContainer
-            readOnly
+            readOnly={!editMode}
             content={user.conditions}
             placeholder={'medication'}
             category={'conditions'}
@@ -114,7 +141,7 @@ export default function PersonalInfo({
         >
           {user.emergencyContacts?.map(contact => (
             <ContactCard
-              readOnly
+              readOnly={!editMode}
               onClick={() => {}}
               key={contact.id}
               content={contact}
@@ -128,7 +155,7 @@ export default function PersonalInfo({
           Icon={AdditionalInfoIcon}
         >
           <Textarea
-            disabled
+            disabled={!editMode}
             className="mt-4"
             defaultValue={user.additionalInfo}
           ></Textarea>

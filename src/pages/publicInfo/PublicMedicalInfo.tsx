@@ -2,7 +2,7 @@ import type { JSX } from 'react'
 import PersonalInfo from '../myAccount/PersonalInfo'
 import useUserById from '@/hooks/useUserById'
 import { useSearchParams } from 'react-router-dom'
-import { Spinner } from '@/components/ui/spinner'
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 export default function PublicMedicalInfo(): JSX.Element {
   const [searchParams] = useSearchParams()
@@ -14,10 +14,7 @@ export default function PublicMedicalInfo(): JSX.Element {
   console.log(data)
 
   return isLoading ? (
-    <div className="flex flex-col items-center gap-2 justify-center h-dvh">
-      <Spinner className="size-12" />
-      <h1>Loading data...</h1>
-    </div>
+    <LoadingSpinner />
   ) : (
     <PersonalInfo isPrivate={false} user={data} />
   )
