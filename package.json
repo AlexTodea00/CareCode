@@ -6,7 +6,7 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "deployDev": "yarn build && firebase use 987877158609 && firebase deploy --only hosting",
+    "deployDev": "yarn build --mode dev && firebase use 987877158609 && firebase deploy --only hosting",
     "lint": "eslint .",
     "preview": "vite preview"
   },
