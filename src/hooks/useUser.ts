@@ -1,8 +1,6 @@
-import { db } from '@/App'
 import type { CurrentUser } from '@/types/user'
+import { supabase } from '@/utils/supabase'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { type User } from 'firebase/auth'
-import { doc, getDoc } from 'firebase/firestore'
 
 type useUserReturnProps = {
   data: CurrentUser
@@ -10,20 +8,25 @@ type useUserReturnProps = {
   mutate: () => void
 }
 
-const useUser = (currentUser: User): useUserReturnProps => {
+const useUser = (id: string): useUserReturnProps => {
   const queryKey = 'userInfo'
+  const columnMapping =
+    '*, fullName: full_name, emergencyContacts: emergency_contacts, additionalInfo: additional_info, bloodType: blood_type '
 
   const fetcher = async (): Promise<CurrentUser> => {
-    const docRef = currentUser ? doc(db, 'users', currentUser.uid) : undefined
-    const docSnap = await getDoc(docRef)
+    const res = await supabase
+      .from('profiles')
+      .select(columnMapping)
+      .eq('id', id)
+      .maybeSingle()
 
-    return docSnap.data() as CurrentUser
+    return res.data as unknown as CurrentUser
   }
 
   const { data, isFetching: isLoading } = useQuery({
-    queryKey: [`${queryKey}_${currentUser?.uid}`],
+    queryKey: [`${queryKey}_${id}`],
     queryFn: fetcher,
-    enabled: !!currentUser,
+    enabled: !!id,
   })
 
   const queryClient = useQueryClient()

@@ -1,14 +1,15 @@
-import { auth, db } from '@/App'
 import Page from '@/components/Page'
 import { Button } from '@/components/ui/button'
 import { Spinner } from '@/components/ui/spinner'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { doc, setDoc } from 'firebase/firestore'
+import { MY_ACCOUNT_PATH } from '@/utils/paths'
+import { supabase } from '@/utils/supabase'
 
 import { useState, type JSX } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Checkout(): JSX.Element {
   const sessionStorage = window.sessionStorage
+  const navigate = useNavigate()
 
   const email = sessionStorage.getItem('email')
   const password = sessionStorage.getItem('password')
@@ -19,28 +20,36 @@ export default function Checkout(): JSX.Element {
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
+  const userData = {
+    full_name: personalInfo.fullName,
+    dob: personalInfo.dob,
+    blood_type: personalInfo.bloodType,
+    weight: Number(personalInfo.weight),
+    height: Number(personalInfo.height),
+    allergies: medicalInfo.allergies,
+    medications: medicalInfo.medications,
+    conditions: medicalInfo.conditions,
+    terms_and_conditions: sessionStorage.getItem('termsAndConditions'),
+    emergency_contacts: emergencyContacts,
+    additional_info: sessionStorage.getItem('additionalInfo'),
+  }
+
   const onClick = async (): Promise<void> => {
     setIsLoading(true)
-    const res = await createUserWithEmailAndPassword(auth, email, password)
 
-    const data = {
-      id: res.user.uid,
-      fullName: personalInfo.fullName,
-      dob: personalInfo.dob,
-      bloodType: personalInfo.bloodType,
-      weight: personalInfo.weight,
-      height: personalInfo.height,
-      allergies: medicalInfo.allergies,
-      medications: medicalInfo.medications,
-      conditions: medicalInfo.conditions,
-      termsAndConditions: sessionStorage.getItem('termsAndConditions'),
-      emergencyContacts: emergencyContacts,
-      additionalInfo: sessionStorage.getItem('additionalInfo'),
-    }
-
-    await setDoc(doc(db, 'users', res.user.uid), data)
+    const { data: result } = await supabase.auth.signUp({
+      email: email,
+      password: password,
+      options: {
+        data: userData,
+      },
+    })
 
     setIsLoading(false)
+
+    if (result.session) {
+      navigate(MY_ACCOUNT_PATH)
+    }
   }
 
   return (

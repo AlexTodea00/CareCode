@@ -19,7 +19,7 @@ export default function MyAccount(): JSX.Element {
 
   const currentUser = useAuth()
 
-  const { data: user, isLoading } = useUser(currentUser)
+  const { data: user, isLoading } = useUser(currentUser?.user.id)
 
   return (
     <main>
@@ -30,7 +30,6 @@ export default function MyAccount(): JSX.Element {
         selection={selection}
       />
       {isLoading && !user && <LoadingSpinner />}
-
       {!isLoading && user && selection === 'personal_info' && (
         <PersonalInfo user={user} />
       )}

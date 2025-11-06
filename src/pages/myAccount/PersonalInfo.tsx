@@ -17,8 +17,6 @@ import type { ContactInfo } from '@/types/contactInfo'
 import type { MedicalInfo } from '@/types/medicalInfo'
 import { DownloadIcon, Edit3Icon } from 'lucide-react'
 import CrossIcon from '@/assets/icons/cross_icon.svg?react'
-import { doc, setDoc } from 'firebase/firestore'
-import { db } from '@/App'
 import { toast } from 'sonner'
 import { Spinner } from '@/components/ui/spinner'
 import PersonIcon from '@/assets/icons/person.svg?react'
@@ -26,6 +24,7 @@ import FormSection from '@/components/FormSection'
 import DropdownInput from '@/components/DropdownInput'
 import { BLOOD_TYPE } from '@/utils/general'
 import TextFormField from '@/components/TextFormField'
+import { supabase } from '@/utils/supabase'
 
 type Props = {
   user: CurrentUser
@@ -123,6 +122,8 @@ export default function PersonalInfo({
     category: 'allergies' | 'conditions' | 'medications',
     clickedValue: string,
   ) => {
+    console.log(medicalInfo[category])
+
     switch (category) {
       case 'allergies':
         setMedicalInfo(prev => {
@@ -205,18 +206,17 @@ export default function PersonalInfo({
     ) {
       setIsSubmitLoading(true)
       const data = {
-        ...user,
-        bloodType: bloodType,
+        blood_type: bloodType,
         allergies: medicalInfo.allergies,
         medications: medicalInfo.medications,
         conditions: medicalInfo.conditions,
-        emergencyContacts: contacts,
-        additionalInfo: dta.additionalInfo,
+        emergency_contacts: contacts,
+        additional_info: dta.additionalInfo,
         weight: dta.weight,
         height: dta.height,
       }
 
-      await setDoc(doc(db, 'users', user.id), data, { merge: true })
+      await supabase.from('profiles').update(data).eq('id', user.id)
 
       toast.success('Profile info updated')
       setIsSubmitLoading(false)
