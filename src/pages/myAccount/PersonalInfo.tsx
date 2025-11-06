@@ -25,6 +25,7 @@ import DropdownInput from '@/components/DropdownInput'
 import { BLOOD_TYPE } from '@/utils/general'
 import TextFormField from '@/components/TextFormField'
 import { supabase } from '@/utils/supabase'
+import CareCodeLogo from '@/assets/illustrations/carecode_logo.svg'
 
 type Props = {
   user: CurrentUser
@@ -256,7 +257,7 @@ export default function PersonalInfo({
                     logoWidth={64}
                     logoOpacity={0.5}
                     logoPaddingStyle="circle"
-                    logoImage="src/assets/illustrations/carecode_logo.svg"
+                    logoImage={CareCodeLogo}
                     value={`${import.meta.env.VITE_BASE_URL}/public/medicalInfo?id=${user.id}`}
                   />
                   <Button
