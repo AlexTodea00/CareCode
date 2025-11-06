@@ -8,6 +8,8 @@ export type CurrentUser = {
   bloodType: string
   additionalInfo: string
   emergencyContacts: EmergencyContact[]
+  weight: number
+  height: number
 }
 
 export type EmergencyContact = {

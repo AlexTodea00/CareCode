@@ -12,18 +12,18 @@ type useUserReturnProps = {
 
 const useUser = (currentUser: User): useUserReturnProps => {
   const queryKey = 'userInfo'
-  const docRef = currentUser ? doc(db, 'users', currentUser.uid) : undefined
 
   const fetcher = async (): Promise<CurrentUser> => {
+    const docRef = currentUser ? doc(db, 'users', currentUser.uid) : undefined
     const docSnap = await getDoc(docRef)
 
     return docSnap.data() as CurrentUser
   }
 
   const { data, isFetching: isLoading } = useQuery({
-    queryKey: [queryKey],
+    queryKey: [`${queryKey}_${currentUser?.uid}`],
     queryFn: fetcher,
-    enabled: !!currentUser?.uid,
+    enabled: !!currentUser,
   })
 
   const queryClient = useQueryClient()

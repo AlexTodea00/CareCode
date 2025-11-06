@@ -15,12 +15,14 @@ type Props = {
   contacts: ContactInfo[]
   handleContactClick: (newContact: ContactInfo) => void
   handleRemoveContactClick: (contact: ContactInfo) => void
+  readOnly?: boolean
 }
 
 export default function ContactSection({
   contacts,
   handleContactClick,
   handleRemoveContactClick,
+  readOnly = false,
 }: Props): JSX.Element {
   const form = useFormContext<FormType>()
 
@@ -32,38 +34,43 @@ export default function ContactSection({
       Icon={PhoneIcon}
     >
       <div className={styles.container}>
-        <TextInput
-          register={form.register('contactName')}
-          placeholder="Contact name"
-        />
-        <TextInput
-          register={form.register('phoneNumber')}
-          placeholder="Phone number"
-        />
-        <TextInput
-          register={form.register('relationship')}
-          placeholder="Relationship"
-        />
-        <Button
-          onClick={() => {
-            handleContactClick({
-              id: uuid(),
-              contactName: form.watch('contactName'),
-              relationship: form.watch('relationship'),
-              phoneNumber: form.watch('phoneNumber'),
-            })
-            form.resetField('contactName')
-            form.resetField('relationship')
-            form.resetField('phoneNumber')
-          }}
-          type="button"
-        >
-          <AddIcon />
-          Add contact
-        </Button>
+        {!readOnly && (
+          <>
+            <TextInput
+              register={form.register('contactName')}
+              placeholder="Contact name"
+            />
+            <TextInput
+              register={form.register('phoneNumber')}
+              placeholder="Phone number"
+            />
+            <TextInput
+              register={form.register('relationship')}
+              placeholder="Relationship"
+            />
+            <Button
+              onClick={() => {
+                handleContactClick({
+                  id: uuid(),
+                  contactName: form.watch('contactName'),
+                  relationship: form.watch('relationship'),
+                  phoneNumber: form.watch('phoneNumber'),
+                })
+                form.resetField('contactName')
+                form.resetField('relationship')
+                form.resetField('phoneNumber')
+              }}
+              type="button"
+            >
+              <AddIcon />
+              Add contact
+            </Button>
+          </>
+        )}
       </div>
       {contacts?.map(contact => (
         <ContactCard
+          readOnly={readOnly}
           onClick={handleRemoveContactClick}
           key={contact.id}
           content={contact}

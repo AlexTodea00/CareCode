@@ -4,7 +4,15 @@ import AdditionalInfoIcon from '@/assets/icons/additional_info.svg?react'
 import { useFormContext } from 'react-hook-form'
 import { Textarea } from '../../components/ui/textarea'
 
-export default function AdditionalSection(): JSX.Element {
+type Props = {
+  readOnly?: boolean
+  defaultValue?: string
+}
+
+export default function AdditionalSection({
+  readOnly = false,
+  defaultValue,
+}: Props): JSX.Element {
   const form = useFormContext()
 
   return (
@@ -15,9 +23,11 @@ export default function AdditionalSection(): JSX.Element {
       Icon={AdditionalInfoIcon}
     >
       <Textarea
+        disabled={readOnly}
         className="mt-4"
         placeholder="Any other relevant information"
         {...form.register('additionalInfo')}
+        defaultValue={defaultValue}
       ></Textarea>
     </FormSection>
   )

@@ -15,15 +15,29 @@ export type DropdownValue = {
 
 type Props = {
   items: DropdownValue[]
+  label: string
+  defaultValue: string
+  disabled: boolean
+  onChange?: (v: string) => void
 }
 
-function DropdownInput({ items }: Props): JSX.Element {
+function DropdownInput({
+  items,
+  label,
+  defaultValue,
+  disabled,
+  onChange,
+}: Props): JSX.Element {
   return (
     <div className="mt-3.5">
       <Label className="mb-1.5" htmlFor="dropdown">
-        Blood type*
+        {label}
       </Label>
-      <Select>
+      <Select
+        onValueChange={onChange}
+        disabled={disabled}
+        defaultValue={defaultValue}
+      >
         <SelectTrigger className="w-[100%]">
           <SelectValue placeholder="Select blood type" />
         </SelectTrigger>

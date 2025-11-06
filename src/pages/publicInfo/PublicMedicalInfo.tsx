@@ -11,8 +11,6 @@ export default function PublicMedicalInfo(): JSX.Element {
 
   const { data, isLoading } = useUserById(userId)
 
-  console.log(data)
-
   return isLoading ? (
     <LoadingSpinner />
   ) : (

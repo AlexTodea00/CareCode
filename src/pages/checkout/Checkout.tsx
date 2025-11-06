@@ -28,6 +28,8 @@ export default function Checkout(): JSX.Element {
       fullName: personalInfo.fullName,
       dob: personalInfo.dob,
       bloodType: personalInfo.bloodType,
+      weight: personalInfo.weight,
+      height: personalInfo.height,
       allergies: medicalInfo.allergies,
       medications: medicalInfo.medications,
       conditions: medicalInfo.conditions,

@@ -1,7 +1,7 @@
 import type { JSX } from 'react'
 import FormSection from '../../components/FormSection'
 import PersonIcon from '@/assets/icons/person.svg?react'
-import { BLOOD_TYPE, INPUT_MAX_LENGTH } from '@/utils/general'
+import { BLOOD_TYPE } from '@/utils/general'
 import UploadPhoto from './UploadPhoto'
 import { useFormContext } from 'react-hook-form'
 import type { FormType } from '@/pages/form/CareCodeForm'
@@ -13,7 +13,6 @@ import {
   FormDescription,
   FormMessage,
 } from '../../components/ui/form'
-import { Input } from '../../components/ui/input'
 import {
   Select,
   SelectContent,
@@ -21,6 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '../../components/ui/select'
+import TextFormField from '@/components/TextFormField'
 
 export default function ProfileSection(): JSX.Element {
   const form = useFormContext<FormType>()
@@ -37,40 +37,18 @@ export default function ProfileSection(): JSX.Element {
         error={form.formState.errors.picture?.message}
       />
       <div className="flex mt-5 gap-4">
-        <FormField
-          control={form.control}
+        <TextFormField
+          label="First name*"
+          placeholder="Enter your full name"
           name="fullName"
-          render={({ field }) => (
-            <FormItem className="max-w-full flex-1">
-              <FormLabel>Full name*</FormLabel>
-              <FormControl>
-                <Input
-                  maxLength={INPUT_MAX_LENGTH}
-                  placeholder="Enter your full name"
-                  {...field}
-                ></Input>
-              </FormControl>
-              <FormDescription />
-              <FormMessage />
-            </FormItem>
-          )}
+          form={form}
         />
-        <FormField
+        <TextFormField
+          label="Date of birth*"
+          maxLength={10}
+          placeholder="dd/mm/yyyy"
           name="dob"
-          render={({ field }) => (
-            <FormItem className="max-w-full flex-1">
-              <FormLabel>Date of birth*</FormLabel>
-              <FormControl>
-                <Input
-                  maxLength={10}
-                  placeholder="dd/mm/yyyy"
-                  {...field}
-                ></Input>
-              </FormControl>
-              <FormDescription />
-              <FormMessage />
-            </FormItem>
-          )}
+          form={form}
         />
       </div>
       <FormField
@@ -98,6 +76,22 @@ export default function ProfileSection(): JSX.Element {
           </FormItem>
         )}
       />
+      <div className="flex mt-5 gap-4">
+        <TextFormField
+          label="Weight (kg)*"
+          maxLength={3}
+          placeholder="Enter your weight"
+          name="weight"
+          form={form}
+        />
+        <TextFormField
+          label="Height (cm)*"
+          maxLength={3}
+          placeholder="Enter your height"
+          name="height"
+          form={form}
+        />
+      </div>
     </FormSection>
   )
 }

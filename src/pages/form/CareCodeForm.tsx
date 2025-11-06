@@ -28,6 +28,8 @@ export type FormType = {
   fullName: string
   dob: string
   bloodType: string
+  weight: number
+  height: number
   picture: FileList
   allergy?: string
   medication?: string
@@ -46,6 +48,8 @@ const Schema: yup.ObjectSchema<FormType> = yup.object<FormType>().shape({
     .required('Please insert date of birth')
     .matches(DOB_REGEX, 'Incorrect format'),
   bloodType: yup.string().required('Please choose a blood type'),
+  weight: yup.number().required('Please enter your weight'),
+  height: yup.number().required('Please enter your height'),
   picture: yup
     .mixed<FileList>()
     .required('Please upload a picture')
@@ -95,6 +99,8 @@ function CareCodeForm(): JSX.Element {
         fullName: dta.fullName,
         dob: dta.dob,
         bloodType: dta.bloodType,
+        weight: dta.weight,
+        height: dta.height,
       }),
     )
     sessionStorage.setItem(
