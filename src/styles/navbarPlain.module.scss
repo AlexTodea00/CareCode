@@ -4,15 +4,16 @@
     align-items: center;
     padding-right: var.$space-s;
     gap: var.$space-xl;
+
+    li {
+        cursor: pointer;
+    }
 }
 
 .bell {
     position: relative;
     margin-left: auto;
 
-    &:hover {
-        cursor: pointer;
-    }
 }
 
 .red-dot {

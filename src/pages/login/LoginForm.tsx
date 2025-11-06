@@ -10,7 +10,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { EMAIL_REGEX, INPUT_MAX_LENGTH } from '@/utils/general'
 import { yupResolver } from '@hookform/resolvers/yup'
-import type { JSX } from 'react'
+import { useState, type JSX } from 'react'
 import { useForm, type Resolver } from 'react-hook-form'
 import * as yup from 'yup'
 import EmailIcon from '@/assets/icons/email.svg?react'
@@ -18,6 +18,11 @@ import PasswordIcon from '@/assets/icons/password.svg?react'
 import styles from '@/styles/loginPage.module.scss'
 import { Button } from '@/components/ui/button'
 import { LogInIcon } from 'lucide-react'
+import { supabase } from '@/utils/supabase'
+import { Spinner } from '@/components/ui/spinner'
+import { toast } from 'sonner'
+import { useNavigate } from 'react-router-dom'
+import { MY_ACCOUNT_PATH } from '@/utils/paths'
 
 type LoginFormType = {
   email: string
@@ -37,8 +42,21 @@ function LoginForm(): JSX.Element {
     resolver: yupResolver(LoginSchema) as Resolver<LoginFormType>,
   })
 
-  const onSubmit = (dta: LoginFormType) => {
-    console.log(dta)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const navigate = useNavigate()
+
+  const onSubmit = async (dta: LoginFormType): Promise<void> => {
+    try {
+      setIsLoading(true)
+      await supabase.auth.signInWithPassword({
+        email: dta.email,
+        password: dta.password,
+      })
+      setIsLoading(false)
+      navigate(MY_ACCOUNT_PATH, { replace: true })
+    } catch {
+      toast.error('Something went wrong')
+    }
   }
 
   return (
@@ -96,7 +114,8 @@ function LoginForm(): JSX.Element {
           )}
         />
         <Button>
-          <LogInIcon />
+          {isLoading && <Spinner />}
+          {!isLoading && <LogInIcon />}
           Log in
         </Button>
       </form>

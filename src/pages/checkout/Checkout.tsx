@@ -6,6 +6,7 @@ import { supabase } from '@/utils/supabase'
 
 import { useState, type JSX } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'sonner'
 
 export default function Checkout(): JSX.Element {
   const sessionStorage = window.sessionStorage
@@ -35,20 +36,24 @@ export default function Checkout(): JSX.Element {
   }
 
   const onClick = async (): Promise<void> => {
-    setIsLoading(true)
+    try {
+      setIsLoading(true)
 
-    const { data: result } = await supabase.auth.signUp({
-      email: email,
-      password: password,
-      options: {
-        data: userData,
-      },
-    })
+      const { data: result } = await supabase.auth.signUp({
+        email: email,
+        password: password,
+        options: {
+          data: userData,
+        },
+      })
 
-    setIsLoading(false)
+      setIsLoading(false)
 
-    if (result.session) {
-      navigate(MY_ACCOUNT_PATH)
+      if (result.session) {
+        navigate(MY_ACCOUNT_PATH)
+      }
+    } catch (error) {
+      toast.error(error)
     }
   }
 

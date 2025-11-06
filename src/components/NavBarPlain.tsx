@@ -4,6 +4,10 @@ import styles from '@/styles/navbarPlain.module.scss'
 import BellIcon from '@/assets/icons/bell.svg?react'
 import MyAccountMenu from './MyAccountMenu'
 import HamburgerIcon from '@/assets/icons/hamburger.svg?react'
+import LogoutIcon from '@/assets/icons/logout.svg?react'
+import { supabase } from '@/utils/supabase'
+import { useNavigate } from 'react-router-dom'
+import { LOGIN_PATH } from '@/utils/paths'
 
 type Props = {
   setSelection: React.Dispatch<React.SetStateAction<string>>
@@ -18,6 +22,13 @@ function NavBarPlain({
   selection,
   isOpen,
 }: Props): JSX.Element {
+  const navigate = useNavigate()
+
+  const signOut = async (): Promise<void> => {
+    await supabase.auth.signOut()
+    navigate(LOGIN_PATH, { replace: true })
+  }
+
   return (
     <nav className={styles.nav}>
       <ul className={styles['navbar-content']}>
@@ -32,6 +43,9 @@ function NavBarPlain({
         <li className={styles.bell}>
           <span className={styles['red-dot']}></span>
           <BellIcon />
+        </li>
+        <li onClick={signOut}>
+          <LogoutIcon />
         </li>
         {/* <MyAccountMenu
           setIsOpen={setIsOpen}
