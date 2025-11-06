@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
+    "deployDev": "yarn build && firebase use 987877158609 && firebase deploy --only hosting",
     "lint": "eslint .",
     "preview": "vite preview"
   },
