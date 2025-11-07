@@ -84,7 +84,11 @@ function NavBar({ sectionRefs, onClick }: Props): JSX.Element {
             {item.label}
           </li>
         ))}
-        <Button className={styles['get-started']} type="button">
+        <Button
+          onClick={() => navigate(`${LOGIN_PATH}?defaultValue=register`)}
+          className={styles['get-started']}
+          type="button"
+        >
           Get started
         </Button>
       </ul>

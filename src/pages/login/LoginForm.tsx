@@ -22,7 +22,7 @@ import { supabase } from '@/utils/supabase'
 import { Spinner } from '@/components/ui/spinner'
 import { toast } from 'sonner'
 import { useNavigate } from 'react-router-dom'
-import { MY_ACCOUNT_PATH } from '@/utils/paths'
+import { MY_ACCOUNT_PATH, PASSWORD_RESET } from '@/utils/paths'
 
 type LoginFormType = {
   email: string
@@ -113,6 +113,14 @@ function LoginForm(): JSX.Element {
             </FormItem>
           )}
         />
+
+        <Button
+          onClick={() => navigate(PASSWORD_RESET)}
+          className="self-end justify-end"
+          variant="link"
+        >
+          Forgot password?
+        </Button>
         <Button>
           {isLoading && <Spinner />}
           {!isLoading && <LogInIcon />}

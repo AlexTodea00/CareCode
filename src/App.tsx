@@ -7,6 +7,7 @@ import {
   LOGIN_PATH,
   MEDICAL_FORM_PATH,
   MY_ACCOUNT_PATH,
+  PASSWORD_RESET,
   PUBLIC_MEDICAL_INFO,
 } from './utils/paths'
 import LoginPage from './pages/login/LoginPage'
@@ -16,17 +17,18 @@ import MyAccount from './pages/myAccount/MyAccount'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import PublicMedicalInfo from './pages/publicInfo/PublicMedicalInfo'
 import AuthContextProviderWrapper from './providers/AuthContextProvider'
+import ForgotPassword from './pages/login/ForgotPassword'
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false, // default: true
+      retry: false,
+    },
+  },
+})
 
 function App(): React.JSX.Element {
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        refetchOnWindowFocus: false, // default: true
-        retry: false,
-      },
-    },
-  })
-
   return (
     <AuthContextProviderWrapper>
       <QueryClientProvider client={queryClient}>
@@ -42,6 +44,7 @@ function App(): React.JSX.Element {
               path={PUBLIC_MEDICAL_INFO}
               element={<PublicMedicalInfo />}
             ></Route>
+            <Route path={PASSWORD_RESET} element={<ForgotPassword />}></Route>
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
