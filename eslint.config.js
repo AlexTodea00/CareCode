@@ -28,5 +28,6 @@ export default defineConfig({
   rules: {
     // Put rules you want to override here
     'react-x/no-class-component': 'warn',
+    'react-hooks/incompatible-library': 'off'
   },
 })

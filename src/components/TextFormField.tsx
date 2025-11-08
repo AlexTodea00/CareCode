@@ -19,7 +19,7 @@ type Props<T extends FieldValues> = {
   maxLength?: number
   className?: string
   disabled?: boolean
-  type?: 'text' | 'number'
+  type?: 'text' | 'number' | 'password'
 }
 
 export default function TextFormField<T extends FieldValues>({

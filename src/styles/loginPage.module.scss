@@ -4,6 +4,7 @@
     border-radius: 12px;
     margin-top: 64px;
     padding: var.$space-s;
+
 }
 
 .tabs {
@@ -41,4 +42,21 @@
 .title {
     font-size: 18px;
     font-weight: var.$font-bold;
+
+}
+
+.confirmation {
+    margin: 0 auto;
+    background-color: var.$lighter-red;
+    border-radius: 100%;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    svg {
+        color: var.$red;
+    }
 }

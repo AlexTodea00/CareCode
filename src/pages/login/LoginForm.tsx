@@ -46,16 +46,16 @@ function LoginForm(): JSX.Element {
   const navigate = useNavigate()
 
   const onSubmit = async (dta: LoginFormType): Promise<void> => {
-    try {
-      setIsLoading(true)
-      await supabase.auth.signInWithPassword({
-        email: dta.email,
-        password: dta.password,
-      })
-      setIsLoading(false)
+    setIsLoading(true)
+    const { error } = await supabase.auth.signInWithPassword({
+      email: dta.email,
+      password: dta.password,
+    })
+    setIsLoading(false)
+    if (error) {
+      toast.error(error.message)
+    } else {
       navigate(MY_ACCOUNT_PATH, { replace: true })
-    } catch {
-      toast.error('Something went wrong')
     }
   }
 
