@@ -8,10 +8,10 @@ import {
 } from '@/components/ui/dialog'
 import type { JSX, ReactNode } from 'react'
 
-type Props = {
+export type DialogComponentProps = {
   title: string
   description: string
-  children: ReactNode
+  children?: ReactNode
   content?: ReactNode
 }
 
@@ -20,10 +20,12 @@ export default function DialogComponent({
   description,
   children,
   content,
-}: Props): JSX.Element {
+}: DialogComponentProps): JSX.Element {
   return (
     <Dialog>
-      <DialogTrigger asChild>{children}</DialogTrigger>
+      <DialogTrigger className="cursor-pointer" asChild>
+        {children}
+      </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>

@@ -1,5 +1,5 @@
 import { type JSX } from 'react'
-import CareCodeLogo from '@/assets/illustrations/carecode_logo.svg'
+import CareCodeLogo from '@/assets/illustrations/carecode_logo.webp'
 import styles from '@/styles/navbarPlain.module.scss'
 import BellIcon from '@/assets/icons/bell.svg?react'
 import MyAccountMenu from './MyAccountMenu'

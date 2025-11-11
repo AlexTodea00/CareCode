@@ -1,5 +1,5 @@
 import { useState, type JSX, type RefObject } from 'react'
-import CareCodeLogo from '@/assets/illustrations/carecode_logo.svg'
+import CareCodeLogo from '@/assets/illustrations/carecode_logo.webp'
 import styles from '@/styles/navbar.module.scss'
 import { Button } from './ui/button'
 import HamburgerIcon from '@/assets/icons/hamburger.svg?react'

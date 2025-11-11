@@ -40,6 +40,10 @@ const LoginSchema: yup.ObjectSchema<LoginFormType> = yup.object().shape({
 function LoginForm(): JSX.Element {
   const form = useForm<LoginFormType>({
     resolver: yupResolver(LoginSchema) as Resolver<LoginFormType>,
+    defaultValues: {
+      email: '',
+      password: '',
+    },
   })
 
   const [isLoading, setIsLoading] = useState<boolean>(false)

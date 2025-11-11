@@ -25,7 +25,8 @@ import DropdownInput from '@/components/DropdownInput'
 import { BLOOD_TYPE } from '@/utils/general'
 import TextFormField from '@/components/TextFormField'
 import { supabase } from '@/utils/supabase'
-import CareCodeLogo from '@/assets/illustrations/carecode_logo.svg'
+import CareCodeLogo from '@/assets/illustrations/carecode_logo.webp'
+import TooltipIcon from '@/components/TooltipIcon'
 
 type Props = {
   user: CurrentUser
@@ -287,14 +288,29 @@ export default function PersonalInfo({
       </div>
       <span className={styles.container}>
         {isPrivate && (
-          <Button
-            className="mt-4"
-            variant="outline"
-            onClick={() => setEditMode(!editMode)}
-          >
-            {editMode ? <CrossIcon className={styles.icon} /> : <Edit3Icon />}
-            {editMode ? 'Cancel' : 'Edit'}
-          </Button>
+          <div className="flex items-center mt-4 gap-3">
+            <Button variant="outline" onClick={() => setEditMode(!editMode)}>
+              {editMode ? <CrossIcon className={styles.icon} /> : <Edit3Icon />}
+              {editMode ? 'Cancel' : 'Edit'}
+            </Button>
+            <TooltipIcon
+              title={'Still have questions?'}
+              description="We’re here to help!"
+              content={
+                <p>
+                  To learn more about how we handle your information or to
+                  request deletion of your account data, please email us at{' '}
+                  <a
+                    className="text-sm inline-block cursor-pointer underline text-[#e2392f]"
+                    href="mailto:alextodea14@yahoo.ro"
+                  >
+                    us
+                  </a>
+                  .
+                </p>
+              }
+            />
+          </div>
         )}
         <FormProvider {...form}>
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
