@@ -6,6 +6,7 @@ import HamburgerIcon from '@/assets/icons/hamburger.svg?react'
 import CrossIcon from '@/assets/icons/cross_icon.svg?react'
 import { useNavigate } from 'react-router-dom'
 import { LOGIN_PATH } from '@/utils/paths'
+import { useTranslation } from 'react-i18next'
 
 type SectionRefs = {
   presentation: RefObject<HTMLElement>
@@ -23,12 +24,16 @@ type Props = {
 function NavBar({ sectionRefs, onClick }: Props): JSX.Element {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const menuItems = [
-    { label: 'How it works', ref: sectionRefs.howItWorks },
-    { label: 'Features', ref: sectionRefs.features },
-    { label: 'Pricing', ref: sectionRefs.pricing },
-    { label: 'FAQ', ref: sectionRefs.faq },
+    {
+      label: t('landingPage.navigation.howItWorks'),
+      ref: sectionRefs.howItWorks,
+    },
+    { label: t('landingPage.navigation.features'), ref: sectionRefs.features },
+    { label: t('landingPage.navigation.pricing'), ref: sectionRefs.pricing },
+    { label: t('landingPage.navigation.faq'), ref: sectionRefs.faq },
   ]
 
   return (

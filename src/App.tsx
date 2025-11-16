@@ -18,6 +18,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import PublicMedicalInfo from './pages/publicInfo/PublicMedicalInfo'
 import AuthContextProviderWrapper from './providers/AuthContextProvider'
 import ForgotPassword from './pages/login/ForgotPassword'
+import '@/i18n'
 
 const queryClient = new QueryClient({
   defaultOptions: {

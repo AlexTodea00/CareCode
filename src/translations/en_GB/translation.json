@@ -1,0 +1,10 @@
+{
+    "landingPage": {
+        "navigation": {
+            "howItWorks": "How it works",
+            "features": "Features",
+            "pricing": "Pricing",
+            "faq": "FAQ"
+        }
+    }
+}
