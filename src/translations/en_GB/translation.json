@@ -4,7 +4,27 @@
             "howItWorks": "How it works",
             "features": "Features",
             "pricing": "Pricing",
-            "faq": "FAQ"
+            "faq": "FAQ",
+            "getStarted": "Get started"
+        },
+        "presentationPage": {
+            "medicalInfo": "Medical Information",
+            "whenItMatters": "When It Matters Most",
+            "description": "CareCode provides emergency responders instant access to your vital medical information through a simple QR code sticker. Because in an emergency, every second counts.",
+            "buttons": {
+                "getYours": "Get yours",
+                "howItWorks": "How it works"
+            },
+            "twentyFourSeven": "24/7 Access",
+            "medicalSupport": "Medical support",
+            "qrCodeSample": {
+                "sample": "Sample QR Code",
+                "exampleMedicalInfo": "EXAMPLE MEDICAL INFO:",
+                "bloodType": "Blood type: <strong>O+</strong>",
+                "allergies": "Allergies: <strong>Penicillin</strong>",
+                "conditions": "Conditions: <strong>Diabetes</strong>",
+                "contacts": "Contacts: <strong>Scan for more</strong>"
+            }
         }
     }
 }

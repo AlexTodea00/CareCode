@@ -1,27 +1,40 @@
 import type { JSX } from 'react'
 import styles from '@/styles/qrCodeSample.module.scss'
 import QRCode from '@/assets/illustrations/qr_code.svg?react'
+import { Trans, useTranslation } from 'react-i18next'
 
 export default function QRCodeSample(): JSX.Element {
+  const { t } = useTranslation()
+
   return (
     <div className={styles.container}>
       <div className={styles.background}>
         <QRCode width={128} height={128} />
       </div>
-      <span>Sample QR code</span>
+      <span>{t('landingPage.presentationPage.qrCodeSample.sample')}</span>
       <div className={styles.wrapper}>
-        <span>EXAMPLE MEDICAL INFO:</span>
         <span>
-          Blood type: <strong>O+</strong>
+          {t('landingPage.presentationPage.qrCodeSample.exampleMedicalInfo')}
         </span>
         <span>
-          Allergies: <strong>Penicillin</strong>
+          <Trans
+            i18nKey={'landingPage.presentationPage.qrCodeSample.bloodType'}
+          ></Trans>
         </span>
         <span>
-          Conditions: <strong>Diabetes</strong>
+          <Trans
+            i18nKey={'landingPage.presentationPage.qrCodeSample.allergies'}
+          ></Trans>
         </span>
         <span>
-          Contacts: <strong>Scan for more</strong>
+          <Trans
+            i18nKey={'landingPage.presentationPage.qrCodeSample.conditions'}
+          ></Trans>
+        </span>
+        <span>
+          <Trans
+            i18nKey={'landingPage.presentationPage.qrCodeSample.contacts'}
+          ></Trans>
         </span>
       </div>
     </div>

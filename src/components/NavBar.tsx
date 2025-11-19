@@ -57,7 +57,7 @@ function NavBar({ sectionRefs, onClick }: Props): JSX.Element {
           className={styles['get-started']}
           type="button"
         >
-          Get started
+          {t('landingPage.navigation.getStarted')}
         </Button>
       </ul>
 
@@ -94,7 +94,7 @@ function NavBar({ sectionRefs, onClick }: Props): JSX.Element {
           className={styles['get-started']}
           type="button"
         >
-          Get started
+          {t('landingPage.navigation.getStarted')}
         </Button>
       </ul>
     </nav>

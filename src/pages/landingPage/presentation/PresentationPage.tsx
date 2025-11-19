@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import type { RefType } from '../LandingPage'
 import { useNavigate } from 'react-router-dom'
 import { LOGIN_PATH } from '@/utils/paths'
+import { useTranslation } from 'react-i18next'
 
 type PresentationPageTypes = RefType & {
   onClick: (ref: RefObject<HTMLElement>) => void
@@ -19,39 +20,40 @@ export default function PresentationPage({
   howItWorksRef,
 }: PresentationPageTypes): JSX.Element {
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   return (
     <section ref={ref} className={styles.section}>
       <div>
-        <span className={styles.text}>Medical Information</span>
+        <span className={styles.text}>
+          {t('landingPage.presentationPage.medicalInfo')}
+        </span>
         <span className={`${styles.text} ${styles['text-red']}`}>
-          When It Matters Most
+          {t('landingPage.presentationPage.whenItMatters')}
         </span>
         <p className={styles.description}>
-          CareCode provides emergency responders instant access to your vital
-          medical information through a simple QR code sticker. Because in an
-          emergency, every second counts.
+          {t('landingPage.presentationPage.description')}
         </p>
         <Button
           onClick={() => navigate(`${LOGIN_PATH}?defaultValue=register`)}
           className={`${button.button} ${button.primary}`}
           type="button"
         >
-          Get yours
+          {t('landingPage.presentationPage.buttons.getYours')}
         </Button>
         <Button
           className={`${button.button} ${button.secondary}`}
           type="button"
           onClick={() => onClick(howItWorksRef)}
         >
-          How it works
+          {t('landingPage.presentationPage.buttons.howItWorks')}
         </Button>
         <div>
           <Badge className=" mt-4 h-10 justify-center mr-4" variant="outline">
-            24/7 Access
+            {t('landingPage.presentationPage.twentyFourSeven')}
           </Badge>
           <Badge className=" mt-4 h-10 justify-center" variant="outline">
-            Medical support
+            {t('landingPage.presentationPage.medicalSupport')}
           </Badge>
         </div>
       </div>
