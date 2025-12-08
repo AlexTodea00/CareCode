@@ -1,5 +1,5 @@
 {
-    "landingPage": {
+    "translation": {
         "navigation": {
             "howItWorks": "How it works",
             "features": "Features",
@@ -20,11 +20,88 @@
             "qrCodeSample": {
                 "sample": "Sample QR Code",
                 "exampleMedicalInfo": "EXAMPLE MEDICAL INFO:",
-                "bloodType": "Blood type: <strong>O+</strong>",
-                "allergies": "Allergies: <strong>Penicillin</strong>",
-                "conditions": "Conditions: <strong>Diabetes</strong>",
-                "contacts": "Contacts: <strong>Scan for more</strong>"
+                "bloodType": "Blood type: O+",
+                "allergies": "Allergies: Penicillin",
+                "conditions": "Conditions: Diabetes",
+                "contacts": "Contacts: Scan for more"
             }
+        },
+        "howItWorksPage": {
+            "title": "How CareCode works",
+            "subtitle": "A simple four-step process that could save your life in an emergency",
+            "steps": {
+                "1": {
+                    "title": "Create Your Profile",
+                    "description": "Enter your medical information, emergency contacts, and other vital details securely in our system."
+                },
+                "2": {
+                    "title": "Receive your CareCode sticker",
+                    "description": "We'll send you durable, waterproof QR code sticker that you can place on your belongings or wear as a bracelet."
+                },
+                "3": {
+                    "title": "First responsers scan",
+                    "description": "In an emergency, medical professionals scan your QR code with any smartphone to access your critical information."
+                },
+                "4": {
+                    "title": "Faster, better care",
+                    "description": "Responders can provide appropriate treatment immediately, avoiding harmful interactions and contacting your loved ones."
+                }
+            },
+            "signup": "Sign up for CareCode now"
+        },
+        "featuresPage": {
+            "title": "Features that Save Lives",
+            "subtitle": "CareCode is designed with one goal: to provide critical medical information when it matters most",
+            "list": {
+                "accessible": {
+                    "title": "Accessible 24/7",
+                    "description": "Emergency responders can access your information anytime, anywhere."
+                },
+                "compatibility": {
+                    "title": "Works on any smartphone",
+                    "description": "No special app required. Your CareCode works with any smartphone camera or QR scanner app."
+                },
+                "cloudStorage": {
+                    "title": "Cloud storage",
+                    "description": "Your information is securely stored in the cloud, so you can update it anytime from any device."
+                },
+                "privacy": {
+                    "title": "Privacy controls",
+                    "description": "You decide exactly what information is visible and who can access different parts of your medical profile."
+                },
+                "updates": {
+                    "title": "Easy updates",
+                    "description": "Update your medical information anytime through our secure portal – your QR code stays the same."
+                }
+            },
+            "getYours": "Get yours now!"
+        },
+        "pricingPage": {
+            "status": "Pricing: TBD"
+        },
+        "faqPage": {
+            "title": "Frequently Asked Questions",
+            "subtitle": "Everything you need to know about CareCode",
+            "q1": {
+                "question": "How does CareCode store my information?",
+                "answer": "Your information is stored in secure, encrypted databases, and you control exactly what information is accessible when your QR code is scanned."
+            },
+            "q2": {
+                "question": "How do I update my medical information?",
+                "answer": "You can update your information anytime through the portal app by logging into your account. Changes are instantly reflected when your QR code is scanned, without needing to replace your stickers or products."
+            },
+            "q3": {
+                "question": "Can I use CareCode for my children or elderly parents?",
+                "answer": "Absolutely! CareCode is perfect for children, elderly individuals, or anyone who might not be able to communicate their medical needs in an emergency."
+            },
+            "q4": {
+                "question": "What happens if my QR code is scanned by someone other than medical personnel?",
+                "answer": "You control what information is visible. By default, all your relevant medical information is shared when the QR code is scanned"
+            }
+        },
+        "footer": {
+            "question": "Still have questions?",
+            "contact": "Contact us"
         }
     }
 }

@@ -10,52 +10,49 @@ import { Button } from '@/components/ui/button'
 import type { RefType } from '../LandingPage'
 import { LOGIN_PATH } from '@/utils/paths'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 export default function FeaturesPage({ ref }: RefType): JSX.Element {
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   return (
     <section ref={ref} className={`${styles.container} bg-[#f9fafb]`}>
-      <h1 className={styles.title}>Features that Save Lives </h1>
+      <h1 className={styles.title}>{t('translation.featuresPage.title')}</h1>
       <p className={styles.subtitle}>
-        CareCode is designed with one goal: to provide critical medical
-        information when it matters most
+        {t('translation.featuresPage.subtitle')}
       </p>
       <div className={styles.wrapper}>
         <StepCard
-          title={'Accessible 24/7'}
-          description={
-            'Emergency responders can access your information anytime, anywhere.'
-          }
+          title={t('translation.featuresPage.list.accessible.title')}
+          description={t(
+            'translation.featuresPage.list.accessible.description',
+          )}
           Icon={ClockIcon}
         />
         <StepCard
-          title={'Works on any smartphone'}
-          description={
-            'No special app required. Your CareCode works with any smartphone camera or QR scanner app.'
-          }
+          title={t('translation.featuresPage.list.compatibility.title')}
+          description={t(
+            'translation.featuresPage.list.compatibility.description',
+          )}
           Icon={SmartPhoneIcon}
         />
         <StepCard
-          title={'Cloud storage'}
-          description={
-            'Your information is securely stored in the cloud, so you can update it anytime from any device.'
-          }
+          title={t('translation.featuresPage.list.cloudStorage.title')}
+          description={t(
+            'translation.featuresPage.list.cloudStorage.description',
+          )}
           Icon={CloudIcon}
         />
         <StepCard
-          title={'Privacy controls'}
-          description={
-            'You decide exactly what information is visible and who can access different parts of your medical profile.'
-          }
+          title={t('translation.featuresPage.list.privacy.title')}
+          description={t('translation.featuresPage.list.privacy.description')}
           Icon={LockIcon}
         />
         <StepCard
           className={styles['center-grid-element']}
-          title={'Easy updates'}
-          description={
-            'Update your medical information anytime through our secure portal – your QR code stays the same.'
-          }
+          title={t('translation.featuresPage.list.updates.title')}
+          description={t('translation.featuresPage.list.updates.description')}
           Icon={UpdateIcon}
         />
       </div>
@@ -63,7 +60,7 @@ export default function FeaturesPage({ ref }: RefType): JSX.Element {
         onClick={() => navigate(`${LOGIN_PATH}?defaultValue=register`)}
         className={styles['get-started']}
       >
-        Get yours now!
+        {t('translation.featuresPage.getYours')}
       </Button>
     </section>
   )

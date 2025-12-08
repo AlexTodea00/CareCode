@@ -7,14 +7,15 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import type { RefType } from '../LandingPage'
+import { useTranslation } from 'react-i18next'
 
 export default function FAQPage({ ref }: RefType): JSX.Element {
+  const { t } = useTranslation()
+
   return (
     <section ref={ref} className={`${styles.container} bg-[#f9fafb] `}>
-      <h1 className={styles.title}>Frequently Asked Questions</h1>
-      <p className={styles.subtitle}>
-        Everything you need to know about CareCode
-      </p>
+      <h1 className={styles.title}>{t('translation.faqPage.title')}</h1>
+      <p className={styles.subtitle}>{t('translation.faqPage.subtitle')}</p>
       <div className={styles['accordion-wrapper']}>
         <Accordion
           className={`${styles.accordion} mt-10`}
@@ -23,51 +24,42 @@ export default function FAQPage({ ref }: RefType): JSX.Element {
         >
           <AccordionItem value="item-1">
             <AccordionTrigger>
-              How does CareCode store my information?
+              {t('translation.faqPage.q1.question')}
             </AccordionTrigger>
             <AccordionContent>
-              Your information is stored in secure, encrypted databases, and you
-              control exactly what information is accessible when your QR code
-              is scanned.
+              {t('translation.faqPage.q1.answer')}
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
             <AccordionTrigger>
-              How do I update my medical information?
+              {t('translation.faqPage.q2.question')}
             </AccordionTrigger>
             <AccordionContent>
-              You can update your information anytime through the portal app by
-              logging into your account. Changes are instantly reflected when
-              your QR code is scanned, without needing to replace your stickers
-              or products.
+              {t('translation.faqPage.q2.answer')}
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
             <AccordionTrigger>
-              Can I use CareCode for my children or elderly parents?
+              {t('translation.faqPage.q3.question')}
             </AccordionTrigger>
             <AccordionContent>
-              Absolutely! CareCode is perfect for children, elderly individuals,
-              or anyone who might not be able to communicate their medical needs
-              in an emergency.
+              {t('translation.faqPage.q3.answer')}
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-4">
             <AccordionTrigger>
-              What happens if my QR code is scanned by someone other than
-              medical personnel?
+              {t('translation.faqPage.q4.question')}
             </AccordionTrigger>
             <AccordionContent>
-              You control what information is visible. By default, all your
-              relevant medical information is shared when the QR code is scanned
+              {t('translation.faqPage.q4.answer')}
             </AccordionContent>
           </AccordionItem>
         </Accordion>
       </div>
       <span className="mt-10 ">
-        Still have questions?
+        {t('translation.footer.question')}
         <a className={styles.link} href="mailto:alextodea14@yahoo.ro">
-          Contact us
+          {t('translation.footer.contact')}
         </a>
       </span>
     </section>

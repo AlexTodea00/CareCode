@@ -9,43 +9,37 @@ import { Button } from '@/components/ui/button'
 import type { RefType } from '../LandingPage'
 import { useNavigate } from 'react-router-dom'
 import { LOGIN_PATH } from '@/utils/paths'
+import { useTranslation } from 'react-i18next'
 
 export default function HowItWorksPage({ ref }: RefType): JSX.Element {
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   return (
     <section ref={ref} className={styles.container}>
-      <h1 className={styles.title}>How CareCode works</h1>
+      <h1 className={styles.title}>{t('translation.howItWorksPage.title')}</h1>
       <p className={styles.subtitle}>
-        A simple four-step process that could save your life in an emergency
+        {t('translation.howItWorksPage.subtitle')}
       </p>
       <div className={styles.wrapper}>
         <StepCard
-          title={'Create Your Profile'}
-          description={
-            'Enter your medical information, emergency contacts, and other vital details securely in our system.'
-          }
+          title={t('translation.howItWorksPage.steps.1.title')}
+          description={t('translation.howItWorksPage.steps.1.description')}
           Icon={EditIcon}
         />
         <StepCard
-          title={'Receive your CareCode sticker'}
-          description={
-            "We'll send you durable, waterproof QR code sticker that you can place on your belongings or wear as a bracelet."
-          }
+          title={t('translation.howItWorksPage.steps.2.title')}
+          description={t('translation.howItWorksPage.steps.2.description')}
           Icon={QRCodeIcon}
         />
         <StepCard
-          title={'First responsers scan'}
-          description={
-            'In an emergency, medical professionals scan your QR code with any smartphone to access your critical information.'
-          }
+          title={t('translation.howItWorksPage.steps.3.title')}
+          description={t('translation.howItWorksPage.steps.3.description')}
           Icon={AmbulanceIcon}
         />
         <StepCard
-          title={'Faster, better care'}
-          description={
-            'Responders can provide appropriate treatment immediately, avoiding harmful interactions and contacting your loved ones.'
-          }
+          title={t('translation.howItWorksPage.steps.4.title')}
+          description={t('translation.howItWorksPage.steps.4.description')}
           Icon={HeartIcon}
         />
       </div>
@@ -53,7 +47,7 @@ export default function HowItWorksPage({ ref }: RefType): JSX.Element {
         onClick={() => navigate(`${LOGIN_PATH}?defaultValue=register`)}
         className={styles['get-started']}
       >
-        Sign up for CareCode now
+        {t('translation.howItWorksPage.signup')}
       </Button>
     </section>
   )
