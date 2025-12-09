@@ -7,6 +7,7 @@ import { useFormContext } from 'react-hook-form'
 import type { FormType } from '@/pages/form/CareCodeForm'
 import MedicalInfoInputField from '@/components/MedicalInfoInputField'
 import { Label } from '@/components/ui/label'
+import { useTranslation } from 'react-i18next'
 
 type Props = {
   allergies: string[]
@@ -32,20 +33,23 @@ export default function MedicalSection({
   readOnly = false,
 }: Props): JSX.Element {
   const form = useFormContext<FormType>()
+  const { t } = useTranslation()
 
   return (
     <FormSection
-      header="Medical Information"
-      description="HEALTH DETAILS"
+      header={t('carecodeForm.medicalSection.title')}
+      description={t('carecodeForm.medicalSection.subtitle')}
       Icon={HeartIcon}
       className="heart"
     >
       <div className={styles.container}>
-        {readOnly && <Label className="mt-4">Allergies</Label>}
+        {readOnly && (
+          <Label className="mt-4">{t('form.input.allergies.label')}</Label>
+        )}
         {!readOnly && (
           <MedicalInfoInputField
-            label="Allergies"
-            placeholder="Add allergy..."
+            label={t('form.input.allergies.label')}
+            placeholder={t('form.input.allergies.placeholder')}
             register={form.register('allergy')}
             onClick={() => {
               if (form.watch('allergy'))
@@ -58,16 +62,18 @@ export default function MedicalSection({
       <InfoContainer
         readOnly={readOnly}
         content={allergies}
-        placeholder={'No allergies recorded'}
+        placeholder={t('form.input.allergies.noAllergies')}
         onClick={handlePillClick}
         category="allergies"
       />
       <div className={styles.container}>
-        {readOnly && <Label className="mt-4">Medications</Label>}
+        {readOnly && (
+          <Label className="mt-4">{t('form.input.medications.label')}</Label>
+        )}
         {!readOnly && (
           <MedicalInfoInputField
-            label="Medications"
-            placeholder="Add medication..."
+            label={t('form.input.medications.label')}
+            placeholder={t('form.input.medications.placeholder')}
             register={form.register('medication')}
             onClick={() => {
               if (form.watch('medication'))
@@ -80,16 +86,18 @@ export default function MedicalSection({
       <InfoContainer
         readOnly={readOnly}
         content={medications}
-        placeholder={'No medication recorded'}
+        placeholder={t('form.input.medications.noMedications')}
         onClick={handlePillClick}
         category="medications"
       />
       <div className={styles.container}>
-        {readOnly && <Label className="mt-4">Conditions</Label>}
+        {readOnly && (
+          <Label className="mt-4">{t('form.input.conditions.label')}</Label>
+        )}
         {!readOnly && (
           <MedicalInfoInputField
-            label="Medical conditions"
-            placeholder="Add condition..."
+            label={t('form.input.conditions.label')}
+            placeholder={t('form.input.conditions.placeholder')}
             register={form.register('condition')}
             onClick={() => {
               if (form.watch('condition'))
@@ -102,7 +110,7 @@ export default function MedicalSection({
       <InfoContainer
         readOnly={readOnly}
         content={conditions}
-        placeholder={'No conditions recorded'}
+        placeholder={t('form.input.conditions.noConditions')}
         onClick={handlePillClick}
         category="conditions"
       />

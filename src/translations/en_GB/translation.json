@@ -170,6 +170,21 @@
             "termsAndConditions": {
                 "label": "I agree with the terms and conditions",
                 "required": "You must accept the terms and conditions"
+            },
+            "allergies": {
+                "label": "Allergies",
+                "placeholder": "Add allergy...",
+                "noAllergies": "No allergies recorded"
+            },
+            "medications": {
+                "label": "Medications",
+                "placeholder": "Add medication...",
+                "noMedications": "No medication recorded"
+            },
+            "conditions": {
+                "label": "Medical conditions",
+                "placeholder": "Add condition...",
+                "noConditions": "No conditions recorded"
             }
         }
     },
@@ -177,6 +192,10 @@
         "profileSection": {
             "title": "Personal information",
             "subtitle": "BASIC IDENTITY"
+        },
+        "medicalSection": {
+            "title": "Medical information",
+            "subtitle": "HEALTH DETAILS"
         }
     },
     "general": {
