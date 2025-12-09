@@ -191,6 +191,9 @@
                 "phoneNumber": "Phone number",
                 "relationship": "Relationship",
                 "add": "Add contact"
+            },
+            "additionalInfo": {
+                "label": "Any other relevant information"
             }
         }
     },
@@ -204,8 +207,12 @@
             "subtitle": "HEALTH DETAILS"
         },
         "contactsSection": {
-            "title": "Emergency Contacts",
+            "title": "Emergency contacts",
             "subtitle": "CONTACT LIST"
+        },
+        "additionalSection": {
+            "title": "Additional information",
+            "subtitle": "EXTRA DETAILS"
         }
     },
     "general": {

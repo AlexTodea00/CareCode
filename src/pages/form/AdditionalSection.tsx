@@ -3,6 +3,7 @@ import FormSection from '../../components/FormSection'
 import AdditionalInfoIcon from '@/assets/icons/additional_info.svg?react'
 import { useFormContext } from 'react-hook-form'
 import { Textarea } from '../../components/ui/textarea'
+import { useTranslation } from 'react-i18next'
 
 type Props = {
   readOnly?: boolean
@@ -14,18 +15,18 @@ export default function AdditionalSection({
   defaultValue,
 }: Props): JSX.Element {
   const form = useFormContext()
-
+  const { t } = useTranslation()
   return (
     <FormSection
-      header={'Additional Information'}
-      description={'EXTRA DETAILS'}
+      header={t('carecodeForm.additionalSection.title')}
+      description={t('carecodeForm.additionalSection.subtitle')}
       className={'additional'}
       Icon={AdditionalInfoIcon}
     >
       <Textarea
         disabled={readOnly}
         className="mt-4"
-        placeholder="Any other relevant information"
+        placeholder={t('form.input.additionalInfo.label')}
         {...form.register('additionalInfo')}
         defaultValue={defaultValue}
       ></Textarea>
