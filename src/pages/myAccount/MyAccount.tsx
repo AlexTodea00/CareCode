@@ -21,8 +21,6 @@ export default function MyAccount(): JSX.Element {
 
   const { data: user, isLoading } = useUser(currentUser?.user.id)
 
-  console.log(user)
-
   return (
     <main>
       <NavBarPlain

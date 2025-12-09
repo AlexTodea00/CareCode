@@ -226,6 +226,28 @@
             "followInstructions": "Follow the instructions in the email to set a new password."
         }
     },
+    "myAccount": {
+        "title": {
+            "private": "Profile info",
+            "public": "Shared info"
+        },
+        "age": "years old",
+        "qrDialog": {
+            "title": "Your QR Code",
+            "subtitle": "Scan for a preview of your information",
+            "note": "Note",
+            "noteDescription": "If you chose to print your own sticker, use the above code.",
+            "showQR": "Show QR Code"
+        },
+        "infoPopup": {
+            "title": "Still have questions?",
+            "subtitle": "We're here to help!",
+            "description": {
+                "firstPart": "To learn more about how we handle your information or to request deletion of your account data, please email",
+                "secondPart": "us"
+            }
+        }
+    },
     "toast": {
         "imageSuccess": "Image uploaded successfully",
         "error": "Something went wrong",
@@ -236,6 +258,9 @@
     "general": {
         "carecode": "CareCode",
         "emergencyMedicalInfo": "EMERGENCY MEDICAL INFORMATION",
-        "submit": "Submit"
+        "submit": "Submit",
+        "download": "Download",
+        "cancel": "Cancel",
+        "edit": "Edit"
     }
 }

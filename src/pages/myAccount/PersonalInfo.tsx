@@ -27,6 +27,7 @@ import TextFormField from '@/components/TextFormField'
 import { supabase } from '@/utils/supabase'
 import CareCodeLogo from '@/assets/illustrations/carecode_logo.webp'
 import TooltipIcon from '@/components/TooltipIcon'
+import { useTranslation } from 'react-i18next'
 
 type Props = {
   user: CurrentUser
@@ -70,6 +71,7 @@ export default function PersonalInfo({
     conditions: user.conditions,
   })
   const [bloodType, setBloodType] = useState(user.bloodType)
+  const { t } = useTranslation()
 
   const [contacts, setContacts] = useState<ContactInfo[]>(
     user.emergencyContacts,
@@ -220,10 +222,10 @@ export default function PersonalInfo({
 
       await supabase.from('profiles').update(data).eq('id', user.id)
 
-      toast.success('Profile info updated')
+      toast.success(t('toast.profileUpdated'))
       setIsSubmitLoading(false)
     } else {
-      toast.info('Please edit your details')
+      toast.info(t('toast.editDetails'))
     }
   }
 
@@ -232,7 +234,7 @@ export default function PersonalInfo({
   return (
     <section className={styles.section}>
       <h1 className={styles.header}>
-        {isPrivate ? 'Profile Info' : 'Shared info'}
+        {isPrivate ? t('myAccount.title.private') : t('myAccount.title.public')}
       </h1>
       <div className={styles.wrapper}>
         <img
@@ -243,11 +245,11 @@ export default function PersonalInfo({
         <span>
           <h2>{user.fullName}</h2>
           <span>{user.dob}</span>
-          <span className="block">{`${calculateAge(user.dob)} years old`}</span>
+          <span className="block">{`${calculateAge(user.dob)} ${t('myAccount.age')}`}</span>
           {isPrivate && (
             <DialogComponent
-              title={'Your QR Code'}
-              description={'Scan for a preview of your information'}
+              title={t('myAccount.qrDialog.title')}
+              description={t('myAccount.qrDialog.subtitle')}
               content={
                 <div className={styles.qrcode}>
                   <QRCode
@@ -267,11 +269,11 @@ export default function PersonalInfo({
                     variant="outline"
                   >
                     <DownloadIcon />
-                    Download
+                    {t('general.download')}
                   </Button>
                   <ItemComponent
-                    title="Note"
-                    description="If you chose to print your own sticker, use the above code."
+                    title={t('myAccount.qrDialog.note')}
+                    description={t('myAccount.qrDialog.noteDescription')}
                   />
                 </div>
               }
@@ -280,7 +282,7 @@ export default function PersonalInfo({
                 style={{ width: 130, height: 32, margin: 0, marginTop: 12 }}
                 className={`${button.button} ${button.primary}`}
               >
-                Show QR Code
+                {t('myAccount.qrDialog.showQR')}
               </Button>
             </DialogComponent>
           )}
@@ -291,20 +293,19 @@ export default function PersonalInfo({
           <div className="flex items-center mt-4 gap-3">
             <Button variant="outline" onClick={() => setEditMode(!editMode)}>
               {editMode ? <CrossIcon className={styles.icon} /> : <Edit3Icon />}
-              {editMode ? 'Cancel' : 'Edit'}
+              {editMode ? t('general.cancel') : t('general.edit')}
             </Button>
             <TooltipIcon
-              title={'Still have questions?'}
-              description="We’re here to help!"
+              title={t('myAccount.infoPopup.title')}
+              description={t('myAccount.infoPopup.subtitle')}
               content={
                 <p>
-                  To learn more about how we handle your information or to
-                  request deletion of your account data, please email us at{' '}
+                  {t('myAccount.infoPopup.description.firstPart')}{' '}
                   <a
                     className="text-sm inline-block cursor-pointer underline text-[#e2392f]"
                     href="mailto:alextodea14@yahoo.ro"
                   >
-                    us
+                    {t('myAccount.infoPopup.description.secondPart')}
                   </a>
                   .
                 </p>
@@ -315,31 +316,31 @@ export default function PersonalInfo({
         <FormProvider {...form}>
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <FormSection
-              header="Personal Information"
-              description="BASIC IDENTITY"
+              header={t('carecodeForm.profileSection.title')}
+              description={t('carecodeForm.profileSection.subtitle')}
               className="person"
               Icon={PersonIcon}
             >
               <DropdownInput
                 onChange={v => onDropdownChange(v)}
                 items={BLOOD_TYPE}
-                label={'Blood type'}
+                label={t('form.input.bloodType.label')}
                 defaultValue={bloodType}
                 disabled={!editMode}
               ></DropdownInput>
               <div className="flex mt-5 gap-4">
                 <TextFormField
-                  label="Weight (kg)*"
+                  label={t('form.input.weight.label')}
                   maxLength={3}
-                  placeholder="Enter your weight"
+                  placeholder={t('form.input.bloodType.placeholder')}
                   name="weight"
                   form={form}
                   disabled={!editMode}
                 />
                 <TextFormField
-                  label="Height (cm)*"
+                  label={t('form.input.height.label')}
                   maxLength={3}
-                  placeholder="Enter your height"
+                  placeholder={t('form.input.height.placeholder')}
                   name="height"
                   form={form}
                   disabled={!editMode}
@@ -370,7 +371,7 @@ export default function PersonalInfo({
             {editMode && (
               <Button type="submit" className="mt-3 w-full cursor-pointer">
                 {isSubmitLoading && <Spinner />}
-                Submit
+                {t('general.submit')}
               </Button>
             )}
           </form>
