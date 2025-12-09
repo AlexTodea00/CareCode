@@ -129,8 +129,6 @@ export default function ForgotPassword(): JSX.Element {
     }
   }
 
-  console.log(form.formState.errors)
-
   return (
     <Page description="EMERGENCY MEDICAL INFORMATION">
       <section className={styles.container}>

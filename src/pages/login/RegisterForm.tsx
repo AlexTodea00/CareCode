@@ -20,6 +20,8 @@ import { Button } from '@/components/ui/button'
 import RegisterIcon from '@/assets/icons/sign_in.svg?react'
 import { useNavigate } from 'react-router-dom'
 import { MEDICAL_FORM_PATH } from '@/utils/paths'
+import { useTranslation } from 'react-i18next'
+import { t } from 'i18next'
 
 type RegisterFormType = {
   email: string
@@ -30,20 +32,25 @@ type RegisterFormType = {
 const LoginSchema: yup.ObjectSchema<RegisterFormType> = yup.object().shape({
   email: yup
     .string()
-    .required('Email is required')
-    .matches(EMAIL_REGEX, 'Invalid email format'),
+    .required(t('translation.form.input.email.required'))
+    .matches(EMAIL_REGEX, t('translation.form.input.email.regex')),
   password: yup
     .string()
-    .required('Password is required')
-    .matches(PASSWORD_REGEX, 'Password must match requirements'),
+    .required(t('translation.form.input.password.required'))
+    .matches(PASSWORD_REGEX, t('translation.form.input.password.regex')),
   confirmPassword: yup
     .string()
-    .test('passwords-match', 'Passwords must match', function (value) {
-      return this.parent.password === value
-    }),
+    .test(
+      'passwords-match',
+      t('translation.form.input.confirmPassword.mustMatch'),
+      function (value) {
+        return this.parent.password === value
+      },
+    ),
 })
 
 function RegisterForm(): JSX.Element {
+  const { t } = useTranslation()
   const form = useForm<RegisterFormType>({
     resolver: yupResolver(LoginSchema) as Resolver<RegisterFormType>,
     defaultValues: {
@@ -70,9 +77,11 @@ function RegisterForm(): JSX.Element {
         className={styles.form}
         noValidate
       >
-        <h2 className={`${styles['text-center']}`}>Create account</h2>
+        <h2 className={`${styles['text-center']}`}>
+          {t('translation.auth.register.title')}
+        </h2>
         <p className={`${styles['text-center']}`}>
-          Set up your medical profile
+          {t('translation.auth.register.subtitle')}
         </p>
         <FormField
           control={form.control}
@@ -81,12 +90,12 @@ function RegisterForm(): JSX.Element {
             <FormItem className="max-w-full flex-1 mt-3.5">
               <FormLabel>
                 <EmailIcon />
-                Email*
+                {t('translation.form.input.email.label')}
               </FormLabel>
               <FormControl>
                 <Input
                   maxLength={INPUT_MAX_LENGTH}
-                  placeholder="Enter your email"
+                  placeholder={t('translation.form.input.email.placeholder')}
                   {...field}
                 ></Input>
               </FormControl>
@@ -102,13 +111,13 @@ function RegisterForm(): JSX.Element {
             <FormItem className="max-w-full flex-1 mt-3.5">
               <FormLabel>
                 <PasswordIcon />
-                Password*
+                {t('translation.form.input.password.label')}
               </FormLabel>
               <FormControl>
                 <Input
                   type="password"
                   maxLength={INPUT_MAX_LENGTH}
-                  placeholder="Enter your password"
+                  placeholder={t('translation.form.input.password.placeholder')}
                   {...field}
                 ></Input>
               </FormControl>
@@ -124,13 +133,15 @@ function RegisterForm(): JSX.Element {
             <FormItem className="max-w-full flex-1 mt-3.5">
               <FormLabel>
                 <PasswordIcon />
-                Confirm Password*
+                {t('translation.form.input.confirmPassword.label')}
               </FormLabel>
               <FormControl>
                 <Input
                   type="password"
                   maxLength={INPUT_MAX_LENGTH}
-                  placeholder="Confirm your password"
+                  placeholder={t(
+                    'translation.form.input.confirmPassword.placeholder',
+                  )}
                   {...field}
                 ></Input>
               </FormControl>
@@ -141,7 +152,7 @@ function RegisterForm(): JSX.Element {
         />
         <Button>
           <RegisterIcon className={styles.white} />
-          Register
+          {t('translation.auth.register.button')}
         </Button>
       </form>
     </Form>

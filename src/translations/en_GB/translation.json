@@ -102,6 +102,46 @@
         "footer": {
             "question": "Still have questions?",
             "contact": "Contact us"
+        },
+        "auth": {
+            "loginText": "Login",
+            "registerText": "Register",
+            "register": {
+                "title": "Create account",
+                "subtitle": "Set up your medical profile",
+                "button": "Register"
+            },
+            "login": {
+                "title": "Welcome!",
+                "subtitle": "Sign in to access your medical profile",
+                "button": "Log in",
+                "forgotPassword": "Forgot password?"
+            }
+        },
+        "form": {
+            "input": {
+                "email": {
+                    "label": "Email*",
+                    "placeholder": "Enter your email",
+                    "required": "Email is required",
+                    "regex": "Invalid email format"
+                },
+                "password": {
+                    "label": "Password*",
+                    "placeholder": "Enter your password",
+                    "required": "Password is required",
+                    "regex": "Password must match requirements"
+                },
+                "confirmPassword": {
+                    "label": "Confirm Password*",
+                    "placeholder": "Confirm your password",
+                    "mustMatch": "Password must match"
+                }
+            }
+        },
+        "general": {
+            "carecode": "CareCode",
+            "emergencyMedicalInfo": "EMERGENCY MEDICAL INFORMATION"
         }
     }
 }

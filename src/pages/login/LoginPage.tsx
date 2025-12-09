@@ -7,9 +7,11 @@ import LoginIcon from '@/assets/icons/login.svg?react'
 import LoginForm from './LoginForm'
 import RegisterForm from './RegisterForm'
 import { useSearchParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 function LoginPage(): JSX.Element {
   const [searchParams] = useSearchParams()
+  const { t } = useTranslation()
 
   const getDefaultTab = (): string => {
     const value = searchParams.get('defaultValue')
@@ -20,17 +22,17 @@ function LoginPage(): JSX.Element {
   }
 
   return (
-    <Page description="EMERGENCY MEDICAL INFORMATION">
+    <Page description={t('translation.general.emergencyMedicalInfo')}>
       <section className={styles.container}>
         <Tabs className={styles.tabs} defaultValue={getDefaultTab()}>
           <TabsList>
             <TabsTrigger value="login">
               <LoginIcon />
-              Login
+              {t('translation.auth.loginText')}
             </TabsTrigger>
             <TabsTrigger value="register">
               <SignInIcon />
-              Register
+              {t('translation.auth.registerText')}
             </TabsTrigger>
           </TabsList>
           <TabsContent value="login">

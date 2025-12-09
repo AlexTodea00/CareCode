@@ -23,6 +23,8 @@ import { Spinner } from '@/components/ui/spinner'
 import { toast } from 'sonner'
 import { useNavigate } from 'react-router-dom'
 import { MY_ACCOUNT_PATH, PASSWORD_RESET } from '@/utils/paths'
+import { useTranslation } from 'react-i18next'
+import { t } from 'i18next'
 
 type LoginFormType = {
   email: string
@@ -32,12 +34,15 @@ type LoginFormType = {
 const LoginSchema: yup.ObjectSchema<LoginFormType> = yup.object().shape({
   email: yup
     .string()
-    .required('Email is required')
-    .matches(EMAIL_REGEX, 'Invalid email format'),
-  password: yup.string().required('Password is required'),
+    .required(t('translation.form.input.email.required'))
+    .matches(EMAIL_REGEX, t('translation.form.input.email.regex')),
+  password: yup
+    .string()
+    .required(t('translation.form.input.password.required')),
 })
 
 function LoginForm(): JSX.Element {
+  const { t } = useTranslation()
   const form = useForm<LoginFormType>({
     resolver: yupResolver(LoginSchema) as Resolver<LoginFormType>,
     defaultValues: {
@@ -63,6 +68,8 @@ function LoginForm(): JSX.Element {
     }
   }
 
+  Fix translation yup keys
+
   return (
     <Form {...form}>
       <form
@@ -70,9 +77,11 @@ function LoginForm(): JSX.Element {
         className={styles.form}
         noValidate
       >
-        <h2 className={`${styles['text-center']}`}>Welcome!</h2>
+        <h2 className={`${styles['text-center']}`}>
+          {t('translation.auth.login.title')}
+        </h2>
         <p className={`${styles['text-center']}`}>
-          Sign in to access your medical profile
+          {t('translation.auth.login.subtitle')}
         </p>
         <FormField
           control={form.control}
@@ -81,12 +90,12 @@ function LoginForm(): JSX.Element {
             <FormItem className="max-w-full flex-1 mt-3.5">
               <FormLabel>
                 <EmailIcon />
-                Email*
+                {t('translation.form.input.email.label')}
               </FormLabel>
               <FormControl>
                 <Input
                   maxLength={INPUT_MAX_LENGTH}
-                  placeholder="Enter your email"
+                  placeholder={t('translation.form.input.email.placeholder')}
                   {...field}
                 ></Input>
               </FormControl>
@@ -102,13 +111,13 @@ function LoginForm(): JSX.Element {
             <FormItem className="max-w-full flex-1 mt-3.5">
               <FormLabel>
                 <PasswordIcon />
-                Password*
+                {t('translation.form.input.password.label')}
               </FormLabel>
               <FormControl>
                 <Input
                   type="password"
                   maxLength={INPUT_MAX_LENGTH}
-                  placeholder="Enter your password"
+                  placeholder={t('translation.form.input.password.placeholder')}
                   {...field}
                 ></Input>
               </FormControl>
@@ -123,12 +132,12 @@ function LoginForm(): JSX.Element {
           className="self-end justify-end"
           variant="link"
         >
-          Forgot password?
+          {t('translation.auth.login.forgotPassword')}
         </Button>
         <Button>
           {isLoading && <Spinner />}
           {!isLoading && <LogInIcon />}
-          Log in
+          {t('translation.auth.login.button')}
         </Button>
       </form>
     </Form>

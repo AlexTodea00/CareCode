@@ -1,5 +1,6 @@
 import styles from '@/styles/careCodeTitle.module.scss'
 import type { JSX } from 'react'
+import { useTranslation } from 'react-i18next'
 
 type Props = {
   size?: string
@@ -12,12 +13,14 @@ export default function CareCodeTitle({
   alignSelf = 'center',
   justifySelf = 'center',
 }: Props): JSX.Element {
+  const { t } = useTranslation()
+
   return (
     <h1
       style={{ fontSize: size, justifySelf: justifySelf, alignSelf: alignSelf }}
       className={styles.title}
     >
-      CareCode
+      {t('translation.general.carecode')}
     </h1>
   )
 }
