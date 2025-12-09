@@ -32,17 +32,17 @@ type RegisterFormType = {
 const LoginSchema: yup.ObjectSchema<RegisterFormType> = yup.object().shape({
   email: yup
     .string()
-    .required(t('translation.form.input.email.required'))
-    .matches(EMAIL_REGEX, t('translation.form.input.email.regex')),
+    .required(t('form.input.email.required'))
+    .matches(EMAIL_REGEX, 'form.input.email.regex'),
   password: yup
     .string()
-    .required(t('translation.form.input.password.required'))
-    .matches(PASSWORD_REGEX, t('translation.form.input.password.regex')),
+    .required(t('form.input.password.required'))
+    .matches(PASSWORD_REGEX, 'form.input.password.regex'),
   confirmPassword: yup
     .string()
     .test(
       'passwords-match',
-      t('translation.form.input.confirmPassword.mustMatch'),
+      'form.input.confirmPassword.mustMatch',
       function (value) {
         return this.parent.password === value
       },
@@ -78,10 +78,10 @@ function RegisterForm(): JSX.Element {
         noValidate
       >
         <h2 className={`${styles['text-center']}`}>
-          {t('translation.auth.register.title')}
+          {t('auth.register.title')}
         </h2>
         <p className={`${styles['text-center']}`}>
-          {t('translation.auth.register.subtitle')}
+          {t('auth.register.subtitle')}
         </p>
         <FormField
           control={form.control}
@@ -90,12 +90,12 @@ function RegisterForm(): JSX.Element {
             <FormItem className="max-w-full flex-1 mt-3.5">
               <FormLabel>
                 <EmailIcon />
-                {t('translation.form.input.email.label')}
+                {t('form.input.email.label')}
               </FormLabel>
               <FormControl>
                 <Input
                   maxLength={INPUT_MAX_LENGTH}
-                  placeholder={t('translation.form.input.email.placeholder')}
+                  placeholder={t('form.input.email.placeholder')}
                   {...field}
                 ></Input>
               </FormControl>
@@ -111,13 +111,13 @@ function RegisterForm(): JSX.Element {
             <FormItem className="max-w-full flex-1 mt-3.5">
               <FormLabel>
                 <PasswordIcon />
-                {t('translation.form.input.password.label')}
+                {t('form.input.password.label')}
               </FormLabel>
               <FormControl>
                 <Input
                   type="password"
                   maxLength={INPUT_MAX_LENGTH}
-                  placeholder={t('translation.form.input.password.placeholder')}
+                  placeholder={t('form.input.password.placeholder')}
                   {...field}
                 ></Input>
               </FormControl>
@@ -133,15 +133,13 @@ function RegisterForm(): JSX.Element {
             <FormItem className="max-w-full flex-1 mt-3.5">
               <FormLabel>
                 <PasswordIcon />
-                {t('translation.form.input.confirmPassword.label')}
+                {t('form.input.confirmPassword.label')}
               </FormLabel>
               <FormControl>
                 <Input
                   type="password"
                   maxLength={INPUT_MAX_LENGTH}
-                  placeholder={t(
-                    'translation.form.input.confirmPassword.placeholder',
-                  )}
+                  placeholder={t('form.input.confirmPassword.placeholder')}
                   {...field}
                 ></Input>
               </FormControl>
@@ -152,7 +150,7 @@ function RegisterForm(): JSX.Element {
         />
         <Button>
           <RegisterIcon className={styles.white} />
-          {t('translation.auth.register.button')}
+          {t('auth.register.button')}
         </Button>
       </form>
     </Form>

@@ -22,17 +22,17 @@ function LoginPage(): JSX.Element {
   }
 
   return (
-    <Page description={t('translation.general.emergencyMedicalInfo')}>
+    <Page description={t('general.emergencyMedicalInfo')}>
       <section className={styles.container}>
         <Tabs className={styles.tabs} defaultValue={getDefaultTab()}>
           <TabsList>
             <TabsTrigger value="login">
               <LoginIcon />
-              {t('translation.auth.loginText')}
+              {t('auth.loginText')}
             </TabsTrigger>
             <TabsTrigger value="register">
               <SignInIcon />
-              {t('translation.auth.registerText')}
+              {t('auth.registerText')}
             </TabsTrigger>
           </TabsList>
           <TabsContent value="login">

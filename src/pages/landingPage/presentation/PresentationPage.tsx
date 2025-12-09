@@ -25,35 +25,33 @@ export default function PresentationPage({
   return (
     <section ref={ref} className={styles.section}>
       <div>
-        <span className={styles.text}>
-          {t('translation.presentationPage.medicalInfo')}
-        </span>
+        <span className={styles.text}>{t('presentationPage.medicalInfo')}</span>
         <span className={`${styles.text} ${styles['text-red']}`}>
-          {t('translation.presentationPage.whenItMatters')}
+          {t('presentationPage.whenItMatters')}
         </span>
         <p className={styles.description}>
-          {t('translation.presentationPage.description')}
+          {t('presentationPage.description')}
         </p>
         <Button
           onClick={() => navigate(`${LOGIN_PATH}?defaultValue=register`)}
           className={`${button.button} ${button.primary}`}
           type="button"
         >
-          {t('translation.presentationPage.buttons.getYours')}
+          {t('presentationPage.buttons.getYours')}
         </Button>
         <Button
           className={`${button.button} ${button.secondary}`}
           type="button"
           onClick={() => onClick(howItWorksRef)}
         >
-          {t('translation.presentationPage.buttons.howItWorks')}
+          {t('presentationPage.buttons.howItWorks')}
         </Button>
         <div>
           <Badge className=" mt-4 h-10 justify-center mr-4" variant="outline">
-            {t('translation.presentationPage.twentyFourSeven')}
+            {t('presentationPage.twentyFourSeven')}
           </Badge>
           <Badge className=" mt-4 h-10 justify-center" variant="outline">
-            {t('translation.presentationPage.medicalSupport')}
+            {t('presentationPage.medicalSupport')}
           </Badge>
         </div>
       </div>

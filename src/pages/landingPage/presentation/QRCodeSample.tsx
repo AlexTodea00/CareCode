@@ -11,30 +11,20 @@ export default function QRCodeSample(): JSX.Element {
       <div className={styles.background}>
         <QRCode width={128} height={128} />
       </div>
-      <span>{t('translation.presentationPage.qrCodeSample.sample')}</span>
+      <span>{t('presentationPage.qrCodeSample.sample')}</span>
       <div className={styles.wrapper}>
+        <span>{t('presentationPage.qrCodeSample.exampleMedicalInfo')}</span>
         <span>
-          {t('translation.presentationPage.qrCodeSample.exampleMedicalInfo')}
+          <Trans i18nKey={'presentationPage.qrCodeSample.bloodType'}></Trans>
         </span>
         <span>
-          <Trans
-            i18nKey={'translation.presentationPage.qrCodeSample.bloodType'}
-          ></Trans>
+          <Trans i18nKey={'presentationPage.qrCodeSample.allergies'}></Trans>
         </span>
         <span>
-          <Trans
-            i18nKey={'translation.presentationPage.qrCodeSample.allergies'}
-          ></Trans>
+          <Trans i18nKey={'presentationPage.qrCodeSample.conditions'}></Trans>
         </span>
         <span>
-          <Trans
-            i18nKey={'translation.presentationPage.qrCodeSample.conditions'}
-          ></Trans>
-        </span>
-        <span>
-          <Trans
-            i18nKey={'translation.presentationPage.qrCodeSample.contacts'}
-          ></Trans>
+          <Trans i18nKey={'presentationPage.qrCodeSample.contacts'}></Trans>
         </span>
       </div>
     </div>

@@ -20,7 +20,7 @@ export default function CareCodeTitle({
       style={{ fontSize: size, justifySelf: justifySelf, alignSelf: alignSelf }}
       className={styles.title}
     >
-      {t('translation.general.carecode')}
+      {t('general.carecode')}
     </h1>
   )
 }

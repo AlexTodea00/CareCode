@@ -24,7 +24,6 @@ import { toast } from 'sonner'
 import { useNavigate } from 'react-router-dom'
 import { MY_ACCOUNT_PATH, PASSWORD_RESET } from '@/utils/paths'
 import { useTranslation } from 'react-i18next'
-import { t } from 'i18next'
 
 type LoginFormType = {
   email: string
@@ -34,11 +33,9 @@ type LoginFormType = {
 const LoginSchema: yup.ObjectSchema<LoginFormType> = yup.object().shape({
   email: yup
     .string()
-    .required(t('translation.form.input.email.required'))
-    .matches(EMAIL_REGEX, t('translation.form.input.email.regex')),
-  password: yup
-    .string()
-    .required(t('translation.form.input.password.required')),
+    .required('form.input.email.required')
+    .matches(EMAIL_REGEX, 'form.input.email.regex'),
+  password: yup.string().required('form.input.password.required'),
 })
 
 function LoginForm(): JSX.Element {
@@ -68,8 +65,6 @@ function LoginForm(): JSX.Element {
     }
   }
 
-  Fix translation yup keys
-
   return (
     <Form {...form}>
       <form
@@ -77,12 +72,8 @@ function LoginForm(): JSX.Element {
         className={styles.form}
         noValidate
       >
-        <h2 className={`${styles['text-center']}`}>
-          {t('translation.auth.login.title')}
-        </h2>
-        <p className={`${styles['text-center']}`}>
-          {t('translation.auth.login.subtitle')}
-        </p>
+        <h2 className={`${styles['text-center']}`}>{t('auth.login.title')}</h2>
+        <p className={`${styles['text-center']}`}>{t('auth.login.subtitle')}</p>
         <FormField
           control={form.control}
           name="email"
@@ -90,12 +81,12 @@ function LoginForm(): JSX.Element {
             <FormItem className="max-w-full flex-1 mt-3.5">
               <FormLabel>
                 <EmailIcon />
-                {t('translation.form.input.email.label')}
+                {t('form.input.email.label')}
               </FormLabel>
               <FormControl>
                 <Input
                   maxLength={INPUT_MAX_LENGTH}
-                  placeholder={t('translation.form.input.email.placeholder')}
+                  placeholder={t('form.input.email.placeholder')}
                   {...field}
                 ></Input>
               </FormControl>
@@ -111,13 +102,13 @@ function LoginForm(): JSX.Element {
             <FormItem className="max-w-full flex-1 mt-3.5">
               <FormLabel>
                 <PasswordIcon />
-                {t('translation.form.input.password.label')}
+                {t('form.input.password.label')}
               </FormLabel>
               <FormControl>
                 <Input
                   type="password"
                   maxLength={INPUT_MAX_LENGTH}
-                  placeholder={t('translation.form.input.password.placeholder')}
+                  placeholder={t('form.input.password.placeholder')}
                   {...field}
                 ></Input>
               </FormControl>
@@ -132,12 +123,12 @@ function LoginForm(): JSX.Element {
           className="self-end justify-end"
           variant="link"
         >
-          {t('translation.auth.login.forgotPassword')}
+          {t('auth.login.forgotPassword')}
         </Button>
         <Button>
           {isLoading && <Spinner />}
           {!isLoading && <LogInIcon />}
-          {t('translation.auth.login.button')}
+          {t('auth.login.button')}
         </Button>
       </form>
     </Form>

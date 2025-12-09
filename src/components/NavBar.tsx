@@ -28,12 +28,12 @@ function NavBar({ sectionRefs, onClick }: Props): JSX.Element {
 
   const menuItems = [
     {
-      label: t('translation.navigation.howItWorks'),
+      label: t('navigation.howItWorks'),
       ref: sectionRefs.howItWorks,
     },
-    { label: t('translation.navigation.features'), ref: sectionRefs.features },
-    { label: t('translation.navigation.pricing'), ref: sectionRefs.pricing },
-    { label: t('translation.navigation.faq'), ref: sectionRefs.faq },
+    { label: t('navigation.features'), ref: sectionRefs.features },
+    { label: t('navigation.pricing'), ref: sectionRefs.pricing },
+    { label: t('navigation.faq'), ref: sectionRefs.faq },
   ]
 
   return (
@@ -57,7 +57,7 @@ function NavBar({ sectionRefs, onClick }: Props): JSX.Element {
           className={styles['get-started']}
           type="button"
         >
-          {t('translation.navigation.getStarted')}
+          {t('navigation.getStarted')}
         </Button>
       </ul>
 
@@ -94,7 +94,7 @@ function NavBar({ sectionRefs, onClick }: Props): JSX.Element {
           className={styles['get-started']}
           type="button"
         >
-          {t('translation.navigation.getStarted')}
+          {t('navigation.getStarted')}
         </Button>
       </ul>
     </nav>

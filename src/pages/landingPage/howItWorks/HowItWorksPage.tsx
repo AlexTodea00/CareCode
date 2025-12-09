@@ -17,29 +17,27 @@ export default function HowItWorksPage({ ref }: RefType): JSX.Element {
 
   return (
     <section ref={ref} className={styles.container}>
-      <h1 className={styles.title}>{t('translation.howItWorksPage.title')}</h1>
-      <p className={styles.subtitle}>
-        {t('translation.howItWorksPage.subtitle')}
-      </p>
+      <h1 className={styles.title}>{t('howItWorksPage.title')}</h1>
+      <p className={styles.subtitle}>{t('howItWorksPage.subtitle')}</p>
       <div className={styles.wrapper}>
         <StepCard
-          title={t('translation.howItWorksPage.steps.1.title')}
-          description={t('translation.howItWorksPage.steps.1.description')}
+          title={t('howItWorksPage.steps.1.title')}
+          description={t('howItWorksPage.steps.1.description')}
           Icon={EditIcon}
         />
         <StepCard
-          title={t('translation.howItWorksPage.steps.2.title')}
-          description={t('translation.howItWorksPage.steps.2.description')}
+          title={t('howItWorksPage.steps.2.title')}
+          description={t('howItWorksPage.steps.2.description')}
           Icon={QRCodeIcon}
         />
         <StepCard
-          title={t('translation.howItWorksPage.steps.3.title')}
-          description={t('translation.howItWorksPage.steps.3.description')}
+          title={t('howItWorksPage.steps.3.title')}
+          description={t('howItWorksPage.steps.3.description')}
           Icon={AmbulanceIcon}
         />
         <StepCard
-          title={t('translation.howItWorksPage.steps.4.title')}
-          description={t('translation.howItWorksPage.steps.4.description')}
+          title={t('howItWorksPage.steps.4.title')}
+          description={t('howItWorksPage.steps.4.description')}
           Icon={HeartIcon}
         />
       </div>
@@ -47,7 +45,7 @@ export default function HowItWorksPage({ ref }: RefType): JSX.Element {
         onClick={() => navigate(`${LOGIN_PATH}?defaultValue=register`)}
         className={styles['get-started']}
       >
-        {t('translation.howItWorksPage.signup')}
+        {t('howItWorksPage.signup')}
       </Button>
     </section>
   )
