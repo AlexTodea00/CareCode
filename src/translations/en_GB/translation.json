@@ -185,6 +185,12 @@
                 "label": "Medical conditions",
                 "placeholder": "Add condition...",
                 "noConditions": "No conditions recorded"
+            },
+            "contact": {
+                "name": "Contact name",
+                "phoneNumber": "Phone number",
+                "relationship": "Relationship",
+                "add": "Add contact"
             }
         }
     },
@@ -196,6 +202,10 @@
         "medicalSection": {
             "title": "Medical information",
             "subtitle": "HEALTH DETAILS"
+        },
+        "contactsSection": {
+            "title": "Emergency Contacts",
+            "subtitle": "CONTACT LIST"
         }
     },
     "general": {

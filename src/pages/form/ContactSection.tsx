@@ -10,6 +10,7 @@ import { Button } from '../../components/ui/button'
 import type { ContactInfo } from '@/types/contactInfo'
 import ContactCard from './ContactCard'
 import { uuid } from '@/utils/uuid'
+import { useTranslation } from 'react-i18next'
 
 type Props = {
   contacts: ContactInfo[]
@@ -25,11 +26,12 @@ export default function ContactSection({
   readOnly = false,
 }: Props): JSX.Element {
   const form = useFormContext<FormType>()
+  const { t } = useTranslation()
 
   return (
     <FormSection
-      header={'Emergency Contacts'}
-      description={'CONTACT LIST'}
+      header={t('carecodeForm.contactsSection.title')}
+      description={t('carecodeForm.contactsSection.subtitle')}
       className={'phone'}
       Icon={PhoneIcon}
     >
@@ -38,15 +40,15 @@ export default function ContactSection({
           <>
             <TextInput
               register={form.register('contactName')}
-              placeholder="Contact name"
+              placeholder={t('form.input.contact.name')}
             />
             <TextInput
               register={form.register('phoneNumber')}
-              placeholder="Phone number"
+              placeholder={t('form.input.contact.phoneNumber')}
             />
             <TextInput
               register={form.register('relationship')}
-              placeholder="Relationship"
+              placeholder={t('form.input.contact.relationship')}
             />
             <Button
               onClick={() => {
@@ -63,7 +65,7 @@ export default function ContactSection({
               type="button"
             >
               <AddIcon />
-              Add contact
+              {t('form.input.contact.add')}
             </Button>
           </>
         )}
