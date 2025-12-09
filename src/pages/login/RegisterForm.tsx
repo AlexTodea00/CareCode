@@ -21,7 +21,6 @@ import RegisterIcon from '@/assets/icons/sign_in.svg?react'
 import { useNavigate } from 'react-router-dom'
 import { MEDICAL_FORM_PATH } from '@/utils/paths'
 import { useTranslation } from 'react-i18next'
-import { t } from 'i18next'
 
 type RegisterFormType = {
   email: string
@@ -32,11 +31,11 @@ type RegisterFormType = {
 const LoginSchema: yup.ObjectSchema<RegisterFormType> = yup.object().shape({
   email: yup
     .string()
-    .required(t('form.input.email.required'))
+    .required('form.input.email.required')
     .matches(EMAIL_REGEX, 'form.input.email.regex'),
   password: yup
     .string()
-    .required(t('form.input.password.required'))
+    .required('form.input.password.required')
     .matches(PASSWORD_REGEX, 'form.input.password.regex'),
   confirmPassword: yup
     .string()

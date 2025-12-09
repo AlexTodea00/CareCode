@@ -14,6 +14,7 @@ import { MY_ACCOUNT_PATH, PASSWORD_RESET } from '@/utils/paths'
 import { CheckCircleIcon } from 'lucide-react'
 import { Spinner } from '@/components/ui/spinner'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 type FormType = {
   email: string
@@ -28,8 +29,8 @@ const ForgotPasswordSchema: yup.ObjectSchema<FormType> = yup.object().shape({
     is: false,
     then: schema =>
       schema
-        .required('Email is required')
-        .matches(EMAIL_REGEX, 'Invalid email format'),
+        .required('form.input.email.required')
+        .matches(EMAIL_REGEX, 'form.input.email.regex'),
     otherwise: schema => schema.notRequired(),
   }),
 
@@ -37,8 +38,8 @@ const ForgotPasswordSchema: yup.ObjectSchema<FormType> = yup.object().shape({
     is: true,
     then: schema =>
       schema
-        .required('Password is required')
-        .matches(PASSWORD_REGEX, 'Password must match requirements'),
+        .required('form.input.password.required')
+        .matches(PASSWORD_REGEX, 'form.input.password.regex'),
     otherwise: schema => schema.notRequired(),
   }),
 
@@ -46,8 +47,8 @@ const ForgotPasswordSchema: yup.ObjectSchema<FormType> = yup.object().shape({
     is: true,
     then: schema =>
       schema
-        .required('Please confirm your password')
-        .oneOf([yup.ref('password')], 'Passwords must match'),
+        .required('form.input.confirmPassword.mustMatch')
+        .oneOf([yup.ref('password')], 'form.input.confirmPassword.mustMatch'),
     otherwise: schema => schema.notRequired(),
   }),
 })
@@ -55,6 +56,7 @@ const ForgotPasswordSchema: yup.ObjectSchema<FormType> = yup.object().shape({
 export default function ForgotPassword(): JSX.Element {
   const [isResetSent, setIsResetSent] = useState(false)
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const form = useForm<FormType>({
     resolver: yupResolver(ForgotPasswordSchema) as Resolver<FormType>,
@@ -78,10 +80,10 @@ export default function ForgotPassword(): JSX.Element {
       })
 
       if (error) {
-        toast.error('Something went wrong')
+        toast.error(t('toast.error'))
       }
       if (data) {
-        toast.success('Password has been reset')
+        toast.success(t('toast.passwordReset'))
         localStorage.removeItem('email')
         navigate(MY_ACCOUNT_PATH, { replace: true })
       }
@@ -93,7 +95,7 @@ export default function ForgotPassword(): JSX.Element {
         })
         setIsResetSent(true)
       } catch {
-        toast.error('Something went wrong')
+        toast.error(t('toast.error'))
       }
     }
     setIsRequestLoading(false)
@@ -109,28 +111,28 @@ export default function ForgotPassword(): JSX.Element {
 
   const compileTitle = (): string => {
     if (showPassword) {
-      return 'Update password'
+      return t('forgotPassword.updatePassword')
     }
     if (!isResetSent) {
-      return 'Password reset'
+      return t('forgotPassword.passwordReset')
     } else {
-      return 'Reset request sent'
+      return t('forgotPassword.requestSent')
     }
   }
 
   const compileDescription = (): string => {
     if (showPassword) {
-      return 'Enter a new, secure password to finish resetting your account.'
+      return t('forgotPassword.description.resetPassword')
     }
     if (!isResetSent) {
-      return 'In order to reset your password, we need the email you used to create your account'
+      return t('forgotPassword.description.emailRequest')
     } else {
-      return 'Follow the instructions in the email to set a new password.'
+      return t('forgotPassword.description.followInstructions')
     }
   }
 
   return (
-    <Page description="EMERGENCY MEDICAL INFORMATION">
+    <Page description={t('general.emergencyMedicalInfo')}>
       <section className={styles.container}>
         {isResetSent && (
           <div className={styles.confirmation}>
@@ -150,8 +152,8 @@ export default function ForgotPassword(): JSX.Element {
                 <TextFormField
                   className="mt-4"
                   form={form}
-                  label="Email*"
-                  placeholder={'Enter your email'}
+                  label={t('form.input.email.label')}
+                  placeholder={t('form.input.email.placeholder')}
                   name={'email'}
                 />
               )}
@@ -160,16 +162,16 @@ export default function ForgotPassword(): JSX.Element {
                   <TextFormField
                     className="mt-4"
                     form={form}
-                    label="Password*"
-                    placeholder={'Enter your password'}
+                    label={t('form.input.password.label')}
+                    placeholder={t('form.input.password.placeholder')}
                     name={'password'}
                     type="password"
                   />
                   <TextFormField
                     className="mt-4"
                     form={form}
-                    label="Confirm password*"
-                    placeholder={'Confirm your password'}
+                    label={t('form.input.confirmPassword.label')}
+                    placeholder={t('form.input.confirmPassword.label')}
                     name={'confirmPassword'}
                     type="password"
                   />
@@ -177,7 +179,7 @@ export default function ForgotPassword(): JSX.Element {
               )}
               <Button className="w-full mt-2">
                 {isRequestLoading && <Spinner />}
-                Submit
+                {t('general.submit')}
               </Button>
             </form>
           </Form>

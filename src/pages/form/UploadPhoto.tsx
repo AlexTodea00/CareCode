@@ -23,7 +23,7 @@ function UploadPhoto({ error, register }: Props): JSX.Element {
     if (event.target.files && event.target.files[0]) {
       setPicture(URL.createObjectURL(event.target.files[0]))
     }
-    toast.success('Image uploaded successfully')
+    toast.success(t('toast.imageSuccess'))
   }
 
   return (

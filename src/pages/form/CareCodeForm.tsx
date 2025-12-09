@@ -23,6 +23,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
 import DialogComponent from './DialogComponent'
 import FieldError from '@/components/FieldError'
+import { useTranslation } from 'react-i18next'
 
 export type FormType = {
   fullName: string
@@ -76,6 +77,7 @@ function CareCodeForm(): JSX.Element {
     conditions: [],
   })
   const [contacts, setContacts] = useState<ContactInfo[]>([])
+  const { t } = useTranslation()
 
   const form = useForm<FormType>({
     mode: 'onSubmit',
@@ -231,11 +233,11 @@ function CareCodeForm(): JSX.Element {
                   {...form.register('termsAndConditions')}
                 />
                 <Label htmlFor="terms" className="gap-1">
-                  I agree with the
+                  {t('form.input.termsAndConditions.firstPart')}
                 </Label>
                 <DialogComponent title="T&C" description="Insert T&C here...">
                   <a className="text-sm inline-block cursor-pointer underline text-[#e2392f]">
-                    terms and conditions
+                    {t('form.input.termsAndConditions.secondPart')}
                   </a>
                 </DialogComponent>
               </div>
@@ -246,7 +248,7 @@ function CareCodeForm(): JSX.Element {
               )}
             </div>
             <Button type="submit" className="mt-3 w-full cursor-pointer">
-              Submit
+              {t('general.submit')}
             </Button>
           </form>
         </Form>

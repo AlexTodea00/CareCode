@@ -168,7 +168,8 @@
                 "required": "Upload a picture"
             },
             "termsAndConditions": {
-                "label": "I agree with the terms and conditions",
+                "firstPart": "I agree with the",
+                "secondPart": "terms and conditions",
                 "required": "You must accept the terms and conditions"
             },
             "allergies": {
@@ -215,8 +216,26 @@
             "subtitle": "EXTRA DETAILS"
         }
     },
+    "forgotPassword": {
+        "updatePassword": "Update password",
+        "passwordReset": "Password reset",
+        "requestSent": "Reset request sent",
+        "description": {
+            "resetPassword": "Enter a new, secure password to finish resetting your account.",
+            "emailRequest": "In order to reset your password, we need the email you used to create your account",
+            "followInstructions": "Follow the instructions in the email to set a new password."
+        }
+    },
+    "toast": {
+        "imageSuccess": "Image uploaded successfully",
+        "error": "Something went wrong",
+        "passwordReset": "Password has been reset",
+        "profileUpdated": "Profile info updated",
+        "editDetails": "Edit your details"
+    },
     "general": {
         "carecode": "CareCode",
-        "emergencyMedicalInfo": "EMERGENCY MEDICAL INFORMATION"
+        "emergencyMedicalInfo": "EMERGENCY MEDICAL INFORMATION",
+        "submit": "Submit"
     }
 }
