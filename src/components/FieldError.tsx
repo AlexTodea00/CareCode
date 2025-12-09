@@ -1,9 +1,11 @@
 import type { JSX } from 'react'
+import { useTranslation } from 'react-i18next'
 
 type Props = {
   error: string
 }
 
 export default function FieldError({ error }: Props): JSX.Element {
-  return <p className="text-destructive">{error}</p>
+  const { t } = useTranslation()
+  return <p className="text-destructive">{t(error)}</p>
 }

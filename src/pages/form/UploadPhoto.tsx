@@ -8,6 +8,7 @@ import { toast } from 'sonner'
 import FieldError from '../../components/FieldError'
 import type { FormType } from '@/pages/form/CareCodeForm'
 import type { UseFormRegister } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 
 type Props = {
   error?: string
@@ -16,6 +17,7 @@ type Props = {
 
 function UploadPhoto({ error, register }: Props): JSX.Element {
   const [picture, setPicture] = useState<string>(null)
+  const { t } = useTranslation()
 
   const onImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
@@ -38,7 +40,7 @@ function UploadPhoto({ error, register }: Props): JSX.Element {
           className={`${styles['upload-button']} ${error ? styles['error'] : ''}`}
         >
           <UploadIcon />
-          Upload photo
+          {t('form.input.picture.label')}
           <Input
             {...register('picture')}
             accept="image/*"
@@ -48,7 +50,7 @@ function UploadPhoto({ error, register }: Props): JSX.Element {
             type="file"
           />
         </Label>
-        <p className="mt-1.5">For identification purposes</p>
+        <p className="mt-1.5">{t('form.input.picture.placeholder')}</p>
         {error && <FieldError error={error} />}
       </div>
     </div>

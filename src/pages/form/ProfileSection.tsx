@@ -21,14 +21,16 @@ import {
   SelectValue,
 } from '../../components/ui/select'
 import TextFormField from '@/components/TextFormField'
+import { useTranslation } from 'react-i18next'
 
 export default function ProfileSection(): JSX.Element {
   const form = useFormContext<FormType>()
+  const { t } = useTranslation()
 
   return (
     <FormSection
-      header="Personal Information"
-      description="BASIC IDENTITY"
+      header={t('carecodeForm.profileSection.title')}
+      description={t('carecodeForm.profileSection.subtitle')}
       className="person"
       Icon={PersonIcon}
     >
@@ -38,15 +40,15 @@ export default function ProfileSection(): JSX.Element {
       />
       <div className="flex mt-5 gap-4">
         <TextFormField
-          label="First name*"
-          placeholder="Enter your full name"
+          label={t('form.input.fullName.label')}
+          placeholder={t('form.input.fullName.placeholder')}
           name="fullName"
           form={form}
         />
         <TextFormField
-          label="Date of birth*"
+          label={t('form.input.dob.label')}
           maxLength={10}
-          placeholder="dd/mm/yyyy"
+          placeholder={t('form.input.dob.placeholder')}
           name="dob"
           form={form}
         />
@@ -56,11 +58,15 @@ export default function ProfileSection(): JSX.Element {
         name="bloodType"
         render={({ field }) => (
           <FormItem>
-            <FormLabel className="mt-4">Blood type*</FormLabel>
+            <FormLabel className="mt-4">
+              {t('form.input.bloodType.label')}
+            </FormLabel>
             <Select onValueChange={field.onChange} defaultValue={field.value}>
               <FormControl>
                 <SelectTrigger className="w-[100%]">
-                  <SelectValue placeholder="Select blood type" />
+                  <SelectValue
+                    placeholder={t('form.input.bloodType.placeholder')}
+                  />
                 </SelectTrigger>
               </FormControl>
               <SelectContent>
@@ -78,16 +84,16 @@ export default function ProfileSection(): JSX.Element {
       />
       <div className="flex mt-5 gap-4">
         <TextFormField
-          label="Weight (kg)*"
+          label={t('form.input.weight.label')}
           maxLength={3}
-          placeholder="Enter your weight"
+          placeholder={t('form.input.weight.placeholder')}
           name="weight"
           form={form}
         />
         <TextFormField
-          label="Height (cm)*"
+          label={t('form.input.height.label')}
           maxLength={3}
-          placeholder="Enter your height"
+          placeholder={t('form.input.height.placeholder')}
           name="height"
           form={form}
         />

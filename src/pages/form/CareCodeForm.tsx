@@ -42,18 +42,18 @@ export type FormType = {
 }
 
 const Schema: yup.ObjectSchema<FormType> = yup.object<FormType>().shape({
-  fullName: yup.string().required('Please insert full name'),
+  fullName: yup.string().required('form.input.fullName.required'),
   dob: yup
     .string()
-    .required('Please insert date of birth')
-    .matches(DOB_REGEX, 'Incorrect format'),
-  bloodType: yup.string().required('Please choose a blood type'),
-  weight: yup.number().required('Please enter your weight'),
-  height: yup.number().required('Please enter your height'),
+    .required('form.input.dob.required')
+    .matches(DOB_REGEX, 'form.input.dob.regex'),
+  bloodType: yup.string().required('form.input.bloodType.required'),
+  weight: yup.number().required('form.input.weight.required'),
+  height: yup.number().required('form.input.height.required'),
   picture: yup
     .mixed<FileList>()
-    .required('Please upload a picture')
-    .test('required', 'Please upload a picture', value => {
+    .required('form.input.picture.required')
+    .test('required', 'form.input.picture.required', value => {
       return !!value.length
     }),
   allergy: yup.string(),
@@ -65,8 +65,8 @@ const Schema: yup.ObjectSchema<FormType> = yup.object<FormType>().shape({
   additionalInfo: yup.string(),
   termsAndConditions: yup
     .boolean()
-    .oneOf([true], 'You must accept the terms and conditions')
-    .required('You must accept the terms and conditions'),
+    .oneOf([true], 'form.input.termsAndConditions.required')
+    .required('form.input.termsAndConditions.required'),
 })
 
 function CareCodeForm(): JSX.Element {
